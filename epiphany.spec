@@ -12,14 +12,12 @@
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.18.0
-Release: %mkrel 5
+Version: 2.18.1
+Release: %mkrel 1
 License: GPL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# (fc) 2.18.0-2mdv fix plugin dir (SVN) (GNOME bug #407419)
-Patch0: epiphany-2.18.0-plugindir.patch
 # (fc) 0.9.2-2mdk fix defaults settings
 Patch1:	epiphany-1.6.4-defaults.patch
 # (fc) 1.4.6-2mdk default bookmarks
@@ -97,7 +95,6 @@ This contains the C headers required for developing with Epiphany.
 
 %prep
 %setup -q
-%patch0 -p1 -b .plugindir
 %patch1 -p1 -b .defaults
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
@@ -233,5 +230,3 @@ fi
 %_libdir/pkgconfig/*
 %_datadir/gtk-doc/html/epiphany
 %_datadir/aclocal/*.m4
-
-
