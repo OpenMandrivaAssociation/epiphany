@@ -10,9 +10,11 @@
 %{?_with_mozilla: %global build_with_firefox 0}
 %{?_without_mozilla: %global build_with_firefox 1}
 
+%define dirver 2.19
+
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.18.2
+Version: 2.19.2
 Release: %mkrel 1
 License: GPL
 Group: Networking/WWW
@@ -172,7 +174,7 @@ convert -resize 16x16 data/art/epiphany-bookmarks.png %buildroot%_miconsdir/epip
 mkdir -p %buildroot%{_datadir}/pixmaps
 cp /usr/share/icons/gnome/24x24/apps/web-browser.png %buildroot%{_datadir}/pixmaps/epiphany.png
 
-mkdir -p  %buildroot%{_libdir}/epiphany/1.9/extensions
+mkdir -p  %buildroot%{_libdir}/epiphany/%dirver/extensions
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -222,7 +224,10 @@ fi
 %_iconsdir/*.png
 %_miconsdir/*.png
 %_datadir/pixmaps/*.png
-%_libdir/epiphany
+%dir %_libdir/epiphany
+%dir %_libdir/epiphany/%dirver/
+%dir %_libdir/epiphany/%dirver/extensions
+%_libdir/epiphany/%dirver/plugins
 
 %files devel
 %defattr(-,root,root,-)
