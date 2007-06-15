@@ -15,7 +15,7 @@
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
 Version: 2.19.2
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
