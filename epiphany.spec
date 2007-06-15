@@ -103,9 +103,9 @@ This contains the C headers required for developing with Epiphany.
 %patch10 -p1 -b .enablepango
 
 # fix build
-aclocal-1.9 -I m4
+aclocal -I m4
 # needed for patch0
-automake-1.9
+automake
 autoconf
 
 %build
