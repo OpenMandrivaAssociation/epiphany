@@ -14,7 +14,7 @@
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.19.5
+Version: 2.19.6
 Release: %mkrel 1
 License: GPL
 Group: Networking/WWW
@@ -212,7 +212,7 @@ fi
 %{_mandir}/man1/%name.1*
 %{_datadir}/applications/*
 %{_datadir}/epiphany
-%{_datadir}/icons/hicolor/48x48/apps/*
+%{_datadir}/icons/hicolor/*/apps/*
 %dir %{_datadir}/omf/epiphany
 %{_datadir}/omf/epiphany/epiphany-C.omf
 %if %{with_python}
