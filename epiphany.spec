@@ -14,8 +14,8 @@
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.19.6
-Release: %mkrel 2
+Version: 2.19.90
+Release: %mkrel 1
 License: GPL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -62,6 +62,8 @@ BuildRequires: enchant-devel
 Requires(post): scrollkeeper
 Requires(postun): scrollkeeper
 Provides:       webclient
+#gw for the index themes
+Requires: gnome-themes
 Requires: gnome-doc-utils >= 0.3.2
 Requires: indexhtml
 Requires: iso-codes
@@ -189,6 +191,9 @@ update-alternatives --remove webclient-gnome %{_bindir}/epiphany
 update-alternatives --remove webclient-kde %{_bindir}/epiphany
 fi
 %update_icon_cache hicolor
+%update_icon_cache HighContrastLargePrint
+%update_icon_cache HighContrastLargePrintInverse
+%update_icon_cache LowContrastLargePrint
 
 %{update_menus}
 
@@ -199,6 +204,9 @@ fi
 %{clean_scrollkeeper}
 %{clean_menus}
 %clean_icon_cache hicolor
+%clean_icon_cache HighContrastLargePrint
+%clean_icon_cache HighContrastLargePrintInverse
+%clean_icon_cache LowContrastLargePrint
 
 
 %files -f %{name}-2.0.lang
@@ -213,6 +221,9 @@ fi
 %{_datadir}/applications/*
 %{_datadir}/epiphany
 %{_datadir}/icons/hicolor/*/apps/*
+%{_datadir}/icons/HighContrastLargePrint/*/apps/*
+%{_datadir}/icons/HighContrastLargePrintInverse/*/apps/*
+%{_datadir}/icons/LowContrastLargePrint/*/apps/*
 %dir %{_datadir}/omf/epiphany
 %{_datadir}/omf/epiphany/epiphany-C.omf
 %if %{with_python}
