@@ -15,7 +15,7 @@
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
 Version: 2.19.91
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -135,38 +135,15 @@ rm -rf $RPM_BUILD_ROOT %{name}-2.0.lang
 
 %makeinstall_std
 
+# don't display bookmark editor in menu
+echo 'NoDisplay=true' >>$RPM_BUILD_ROOT%{_datadir}/applications/bme.desktop
+# don't register bookmark editor in bugzilla, main .desktop is enough
+sed -i -e '/^X-GNOME-Bugzilla/d' $RPM_BUILD_ROOT%{_datadir}/applications/bme.desktop
+
 %find_lang %{name}-2.0 --with-gnome --all-name
 for omf in %buildroot%_datadir/omf/%name/%name-??*.omf;do
 echo "%lang($(basename $omf|sed -e s/%name-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name-2.0.lang
 done
-
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}):\
-	needs="X11" \
-	section="Internet/Web Browsers" \
-	title="Epiphany Web Browser" \
-	longtitle="Browse the web" \
-	command="%{_bindir}/epiphany" \
-	icon="web-browser.png" \
-	startup_notify="true" \
-	xdg="true"
-?package(%{name}):\
-	needs="X11" \
-	section="Internet/Web Browsers" \
-	title="Epiphany Bookmarks Editor" \
-	longtitle="Browse and organize your bookmarks" \
-	command="%{_bindir}/epiphany --bookmarks-editor" \
-	icon="epiphany-bookmarks.png" \
-	startup_notify="true" \
-	xdg="true"
-EOF
-
-desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --add-category="X-MandrivaLinux-Internet-WebBrowsers" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 mkdir -p %buildroot{%_liconsdir,%_iconsdir,%_miconsdir}
 install -m 644 data/art/epiphany-bookmarks.png %buildroot%_liconsdir/epiphany-bookmarks.png
@@ -230,7 +207,6 @@ fi
 %{_datadir}/pygtk/2.0/defs/*
 %endif
 %{_datadir}/dbus-1/services/org.gnome.Epiphany.service
-%{_menudir}/*
 %_liconsdir/*.png
 %_iconsdir/*.png
 %_miconsdir/*.png
