@@ -1,6 +1,7 @@
 %define _requires_exceptions libnspr4\\|libplc4\\|libplds4\\|libnss\\|libsmime3\\|libsoftokn\\|libssl3\\|libgtkembedmoz\\|libxpcom
 
 %define build_with_firefox 1
+%define build_with_webkit 0
 
 %define with_python 1
 %{?_with_python: %global with_python 1}
@@ -9,6 +10,11 @@
 # Build with mozilla instead of firefox
 %{?_with_mozilla: %global build_with_firefox 0}
 %{?_without_mozilla: %global build_with_firefox 1}
+
+
+%{?_with_webkit: %global build_with_webkit 1}
+%{?_without_webkit: %global build_with_webkit 0}
+
 
 %define dirver 2.19
 
@@ -30,10 +36,14 @@ Patch9: epiphany-1.8.5-urpmi.patch
 Patch10: epiphany-2.15.92-enablepango.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+%if %{build_with_webkit}
+BuildRequires: pkgconfig(WebKitGdk) 
+%else
 %if %{build_with_firefox}
 BuildRequires: mozilla-firefox-devel
 %else
 BuildRequires: mozilla-devel
+%endif
 %endif
 %if %{with_python}
 BuildRequires: pygtk2.0-devel >= 2.7.1
@@ -113,11 +123,16 @@ autoconf
 %build
 
 %configure2_5x \
+%if %{build_with_webkit}
+--with-engine=webkit \
+%else
+--with-engine=mozilla \
 %if %{build_with_firefox}
 %if %mdkversion >= 200710
 --with-mozilla=firefox \
 %else
 --with-mozilla=mozilla-firefox \
+%endif
 %endif
 %endif
 %if %{with_python}
@@ -214,7 +229,9 @@ fi
 %dir %_libdir/epiphany
 %dir %_libdir/epiphany/%dirver/
 %dir %_libdir/epiphany/%dirver/extensions
+%if ! %{build_with_webkit}
 %_libdir/epiphany/%dirver/plugins
+%endif
 
 %files devel
 %defattr(-,root,root,-)
