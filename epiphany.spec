@@ -32,6 +32,8 @@ Patch1:	epiphany-1.6.4-defaults.patch
 Patch6: epiphany-1.9.4-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch9: epiphany-1.8.5-urpmi.patch
+# (pt) update to WebKitGtk API
+Patch10: epiphany-2.20.1-WebKitGtk.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %{build_with_webkit}
@@ -65,6 +67,8 @@ BuildRequires: librsvg
 BuildRequires: ImageMagick
 BuildRequires: desktop-file-utils
 BuildRequires: enchant-devel
+BuildRequires: autoconf2.5
+BuildRequires: automake
 
 Requires(post): scrollkeeper
 Requires(postun): scrollkeeper
@@ -109,9 +113,13 @@ This contains the C headers required for developing with Epiphany.
 %patch1 -p1 -b .defaults
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
+%patch10 -p1 -b .WebKitGtk
 
 %build
 
+aclocal -Im4
+automake
+autoconf
 %configure2_5x \
 %if %{build_with_webkit}
 --with-engine=webkit \
