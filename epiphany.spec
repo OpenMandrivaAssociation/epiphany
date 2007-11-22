@@ -21,7 +21,7 @@
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
 Version: 2.20.1
-Release: %mkrel 5
+Release: %mkrel 6
 License: GPL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -32,8 +32,6 @@ Patch1:	epiphany-1.6.4-defaults.patch
 Patch6: epiphany-1.9.4-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch9: epiphany-1.8.5-urpmi.patch
-# (fc) 2.15.92-2mdv always enable pango
-Patch10: epiphany-2.15.92-enablepango.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %{build_with_webkit}
@@ -63,7 +61,6 @@ BuildRequires: gtk-doc
 BuildRequires: intltool
 BuildRequires: gnome-common
 BuildRequires: gnome-doc-utils >= 0.3.2
-BuildRequires: automake1.9
 BuildRequires: librsvg
 BuildRequires: ImageMagick
 BuildRequires: desktop-file-utils
@@ -112,13 +109,6 @@ This contains the C headers required for developing with Epiphany.
 %patch1 -p1 -b .defaults
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
-%patch10 -p1 -b .enablepango
-
-# fix build
-aclocal -I m4
-# needed for patch0
-automake
-autoconf
 
 %build
 
