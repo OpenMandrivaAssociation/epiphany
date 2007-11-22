@@ -21,7 +21,7 @@
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
 Version: 2.20.1
-Release: %mkrel 6
+Release: %mkrel 7
 License: GPL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -35,7 +35,7 @@ Patch9: epiphany-1.8.5-urpmi.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %{build_with_webkit}
-BuildRequires: pkgconfig(WebKitGdk) 
+BuildRequires: pkgconfig(WebKitGtk) 
 %else
 %if %{build_with_firefox}
 BuildRequires: mozilla-firefox-devel
