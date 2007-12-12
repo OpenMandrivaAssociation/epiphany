@@ -47,7 +47,7 @@ BuildRequires: mozilla-devel
 %endif
 %if %{with_python}
 BuildRequires: pygtk2.0-devel >= 2.7.1
-BuildRequires: gnome-python
+BuildRequires: gnome-python-devel
 %endif
 BuildRequires: gtk2-devel >= 2.9.0
 BuildRequires: gnome-desktop-devel >= 2.10.0
