@@ -116,7 +116,7 @@ This contains the C headers required for developing with Epiphany.
 aclocal -Im4
 automake
 autoconf
-%configure2_5x \
+%configure2_5x --with-distributor=Mandriva \
 %if %{build_with_webkit}
 --with-engine=webkit \
 %else
