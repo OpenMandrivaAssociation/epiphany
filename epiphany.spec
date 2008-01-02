@@ -33,6 +33,7 @@ Patch6: epiphany-1.9.4-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch9: epiphany-1.8.5-urpmi.patch
 
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %{build_with_webkit}
 BuildRequires: pkgconfig(WebKitGtk) 
 %else
