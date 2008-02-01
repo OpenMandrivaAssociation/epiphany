@@ -1,7 +1,7 @@
 %define _requires_exceptions libnspr4\\|libplc4\\|libplds4\\|libnss\\|libsmime3\\|libsoftokn\\|libssl3\\|libgtkembedmoz\\|libxpcom
 
-%define build_with_firefox 1
-%define build_with_webkit 0
+%define build_with_firefox 0
+%define build_with_webkit 1
 
 %define with_python 1
 %{?_with_python: %global with_python 1}
@@ -36,6 +36,8 @@ Patch9: epiphany-1.8.5-urpmi.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %{build_with_webkit}
 BuildRequires: pkgconfig(WebKitGtk) 
+BuildRequires: icu-devel
+BuildRequires: sqlite3-devel
 %else
 %if %{build_with_firefox}
 BuildRequires: mozilla-firefox-devel
@@ -82,7 +84,10 @@ Requires: enchant
 %define firefox_version %(rpm -q mozilla-firefox --queryformat %{VERSION})
 Requires: %mklibname mozilla-firefox %{firefox_version}
 %else
+%if %{build_with_webkit}
+%else
 Requires: mozilla = %(rpm -q mozilla --queryformat %{VERSION})
+%endif
 %endif
 Provides: pyphany
 Obsoletes: pyphany
