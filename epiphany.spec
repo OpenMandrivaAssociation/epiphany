@@ -1,7 +1,7 @@
 %define _requires_exceptions libnspr4\\|libplc4\\|libplds4\\|libnss\\|libsmime3\\|libsoftokn\\|libssl3\\|libgtkembedmoz\\|libxpcom
 
-%define build_with_firefox 0
-%define build_with_webkit 1
+%define build_with_firefox 1
+%define build_with_webkit 0
 
 %define with_python 1
 %{?_with_python: %global with_python 1}
