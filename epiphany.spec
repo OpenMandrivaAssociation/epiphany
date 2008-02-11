@@ -183,9 +183,6 @@ update-alternatives --remove webclient-gnome %{_bindir}/epiphany
 update-alternatives --remove webclient-kde %{_bindir}/epiphany
 fi
 %update_icon_cache hicolor
-%update_icon_cache HighContrastLargePrint
-%update_icon_cache HighContrastLargePrintInverse
-%update_icon_cache LowContrastLargePrint
 
 %{update_menus}
 
@@ -196,10 +193,6 @@ fi
 %{clean_scrollkeeper}
 %{clean_menus}
 %clean_icon_cache hicolor
-%clean_icon_cache HighContrastLargePrint
-%clean_icon_cache HighContrastLargePrintInverse
-%clean_icon_cache LowContrastLargePrint
-
 
 %files -f %{name}-2.0.lang
 %defattr(-,root,root,-)
