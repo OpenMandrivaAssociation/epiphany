@@ -108,7 +108,6 @@ Requires: libglade2.0-devel
 Requires: dbus-devel
 
 %description devel
-
 This contains the C headers required for developing with Epiphany.
 
 %prep
