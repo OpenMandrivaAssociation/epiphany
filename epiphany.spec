@@ -16,11 +16,11 @@
 %{?_without_webkit: %global build_with_webkit 0}
 
 
-%define dirver 2.21
+%define dirver 2.22
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.21.92
+Version: 2.22.0
 Release: %mkrel 1
 License: GPL
 Group: Networking/WWW
