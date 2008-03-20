@@ -37,7 +37,7 @@ Patch10: epiphany-2.22.0-fixzeroconfbookmarkcrash.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %{build_with_webkit}
-BuildRequires: pkgconfig(WebKitGtk) 
+BuildRequires: WebKitGtk-devel
 BuildRequires: icu-devel
 BuildRequires: sqlite3-devel
 %else
