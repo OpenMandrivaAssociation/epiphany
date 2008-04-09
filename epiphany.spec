@@ -20,8 +20,8 @@
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.22.0
-Release: %mkrel 4
+Version: 2.22.1.1
+Release: %mkrel 1
 License: GPL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -32,8 +32,6 @@ Patch1:	epiphany-1.6.4-defaults.patch
 Patch6: epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch9: epiphany-1.8.5-urpmi.patch
-# (fc) 2.22.0-2mdv fix crash in zeroconf bookmarks (SVN) (GNOME bug #516008)
-Patch10: epiphany-2.22.0-fixzeroconfbookmarkcrash.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %{build_with_webkit}
@@ -117,7 +115,6 @@ This contains the C headers required for developing with Epiphany.
 %patch1 -p1 -b .defaults
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
-%patch10 -p1 -b .fixzeroconfbookmarkcrash
 
 %build
 
