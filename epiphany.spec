@@ -35,7 +35,7 @@ Patch9: epiphany-1.8.5-urpmi.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %{build_with_webkit}
-BuildRequires: WebKitGtk-devel
+BuildRequires: webkitgtk-devel
 BuildRequires: icu-devel
 BuildRequires: sqlite3-devel
 %else
