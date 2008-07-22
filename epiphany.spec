@@ -16,13 +16,13 @@
 %{?_without_webkit: %global build_with_webkit 0}
 
 
-%define dirver 2.22
+%define dirver 2.23
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.22.2
-Release: %mkrel 3
-License: GPL
+Version: 2.23.5
+Release: %mkrel 1
+License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -121,7 +121,7 @@ This contains the C headers required for developing with Epiphany.
 aclocal -Im4
 automake
 autoconf
-%configure2_5x --with-distributor=Mandriva \
+%configure2_5x --with-distributor-name=Mandriva \
 %if %{build_with_webkit}
 --with-engine=webkit \
 %else
@@ -137,7 +137,7 @@ autoconf
 %if %{with_python}
 --enable-python \
 %endif
---disable-filepicker --enable-dbus --disable-scrollkeeper --enable-spell-checker
+--disable-filepicker --disable-scrollkeeper --enable-spell-checker
 
 #remove generated files which shouldn't have been put in the tarball
 make clean
