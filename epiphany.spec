@@ -1,7 +1,7 @@
 %define _requires_exceptions libnspr4\\|libplc4\\|libplds4\\|libnss\\|libsmime3\\|libsoftokn\\|libssl3\\|libgtkembedmoz\\|libxpcom
 
-%define build_with_xulrunner 0
-%define build_with_firefox 1
+%define build_with_xulrunner 1
+%define build_with_firefox 0
 %define build_with_webkit 0
 
 %define with_python 1
@@ -23,7 +23,7 @@
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
 Version: 2.23.5
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
