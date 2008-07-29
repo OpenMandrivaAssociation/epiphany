@@ -1,5 +1,6 @@
 %define _requires_exceptions libnspr4\\|libplc4\\|libplds4\\|libnss\\|libsmime3\\|libsoftokn\\|libssl3\\|libgtkembedmoz\\|libxpcom
 
+%define build_with_xulrunner 0
 %define build_with_firefox 1
 %define build_with_webkit 0
 
@@ -15,6 +16,7 @@
 %{?_with_webkit: %global build_with_webkit 1}
 %{?_without_webkit: %global build_with_webkit 0}
 
+%define xulrunner 1.9.0.1
 
 %define dirver 2.23
 
@@ -39,10 +41,14 @@ BuildRequires: webkitgtk-devel
 BuildRequires: icu-devel
 BuildRequires: sqlite3-devel
 %else
+%if %build_with_xulrunner
+BuildRequires: xulrunner-devel-unstable >= %xulrunner
+%else
 %if %{build_with_firefox}
 BuildRequires: mozilla-firefox-devel
 %else
 BuildRequires: mozilla-devel
+%endif
 %endif
 %endif
 %if %{with_python}
@@ -53,12 +59,11 @@ BuildRequires: gtk2-devel >= 2.9.0
 BuildRequires: gnome-desktop-devel >= 2.10.0
 BuildRequires: libglade2.0-devel >= 2.3.1
 BuildRequires: iso-codes
-BuildRequires: libgnomeprintui-devel
 BuildRequires: libxslt-devel
 BuildRequires: dbus-devel >= 0.35
 BuildRequires: avahi-glib-devel avahi-client-devel
+BuildRequires: libnotify-devel
 BuildRequires: scrollkeeper
-BuildRequires: perl-XML-Parser
 BuildRequires: gtk-doc
 BuildRequires: intltool
 BuildRequires: gnome-common
@@ -80,12 +85,14 @@ Requires: indexhtml
 Requires: iso-codes
 Requires: dbus-x11
 Requires: enchant
+%if %build_with_xulrunner
+Requires: xulrunner >= %xulrunner
+%endif
 %if %{build_with_firefox}
 %define firefox_version %(rpm -q mozilla-firefox --queryformat %{VERSION})
 Requires: %mklibname mozilla-firefox %{firefox_version}
 %else
-%if %{build_with_webkit}
-%else
+%if ! %{build_with_webkit} && ! %build_with_xulrunner
 Requires: mozilla = %(rpm -q mozilla --queryformat %{VERSION})
 %endif
 %endif
@@ -126,11 +133,15 @@ autoconf
 --with-engine=webkit \
 %else
 --with-engine=mozilla \
+%if %build_with_xulrunner
+--with-mozilla=libxul-embedding \
+%else
 %if %{build_with_firefox}
 %if %mdkversion >= 200710
 --with-mozilla=firefox \
 %else
 --with-mozilla=mozilla-firefox \
+%endif
 %endif
 %endif
 %endif
