@@ -113,6 +113,22 @@ Requires: libxml2-devel
 Requires: libgnomeui2-devel
 Requires: libglade2.0-devel
 Requires: dbus-devel
+%if %{build_with_webkit}
+Requires: webkitgtk-devel
+Requires: icu-devel
+Requires: sqlite3-devel
+%else
+%if %build_with_xulrunner
+Requires: xulrunner-devel-unstable >= %xulrunner
+%else
+%if %{build_with_firefox}
+Requires: mozilla-firefox-devel
+%else
+Requires: mozilla-devel
+%endif
+%endif
+%endif
+
 
 %description devel
 This contains the C headers required for developing with Epiphany.
