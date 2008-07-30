@@ -16,14 +16,14 @@
 %{?_with_webkit: %global build_with_webkit 1}
 %{?_without_webkit: %global build_with_webkit 0}
 
-%define xulrunner 1.9.0.1
+%define xulrunner 1.9
 
 %define dirver 2.23
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
 Version: 2.23.5
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -61,7 +61,7 @@ BuildRequires: libglade2.0-devel >= 2.3.1
 BuildRequires: iso-codes
 BuildRequires: libxslt-devel
 BuildRequires: dbus-devel >= 0.35
-BuildRequires: avahi-glib-devel avahi-client-devel
+BuildRequires: avahi-gobject-devel
 BuildRequires: libnotify-devel
 BuildRequires: scrollkeeper
 BuildRequires: gtk-doc
@@ -86,7 +86,7 @@ Requires: iso-codes
 Requires: dbus-x11
 Requires: enchant
 %if %build_with_xulrunner
-Requires: xulrunner >= %xulrunner
+Requires: %mklibname xulrunner %xulrunner
 %endif
 %if %{build_with_firefox}
 %define firefox_version %(rpm -q mozilla-firefox --queryformat %{VERSION})
