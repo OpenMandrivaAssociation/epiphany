@@ -196,6 +196,9 @@ cp /usr/share/icons/gnome/24x24/apps/web-browser.png %buildroot%{_datadir}/pixma
 
 mkdir -p  %buildroot%{_libdir}/epiphany/%dirver/extensions
 
+#gw these are useless
+rm -f %buildroot%{_datadir}/icons/LowContrastLargePrint/*/apps/*
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -213,7 +216,6 @@ fi
 %update_icon_cache hicolor
 %update_icon_cache HighContrastLargePrint
 %update_icon_cache HighContrastLargePrintInverse
-%update_icon_cache LowContrastLargePrint
 
 %if %mdkversion < 200900
 %{update_menus}
@@ -228,7 +230,6 @@ fi
 %clean_icon_cache hicolor
 %clean_icon_cache HighContrastLargePrint
 %clean_icon_cache HighContrastLargePrintInverse
-%clean_icon_cache LowContrastLargePrint
 
 %files -f %{name}-2.0.lang
 %defattr(-,root,root,-)
@@ -244,7 +245,6 @@ fi
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/HighContrastLargePrint/*/apps/*
 %{_datadir}/icons/HighContrastLargePrintInverse/*/apps/*
-%{_datadir}/icons/LowContrastLargePrint/*/apps/*
 %dir %{_datadir}/omf/epiphany
 %{_datadir}/omf/epiphany/epiphany-C.omf
 %if %{with_python}
