@@ -23,7 +23,7 @@
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
 Version: 2.23.5
-Release: %mkrel 3
+Release: %mkrel 4
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -210,9 +210,10 @@ if [ "$1" = "2" ]; then
 update-alternatives --remove webclient-gnome %{_bindir}/epiphany
 update-alternatives --remove webclient-kde %{_bindir}/epiphany
 fi
-%if %mdkversion < 200900
 %update_icon_cache hicolor
-%endif
+%update_icon_cache HighContrastLargePrint
+%update_icon_cache HighContrastLargePrintInverse
+%update_icon_cache LowContrastLargePrint
 
 %if %mdkversion < 200900
 %{update_menus}
@@ -221,12 +222,13 @@ fi
 %preun
 %preun_uninstall_gconf_schemas %{schemas}
 
-%if %mdkversion < 200900
 %postun
 %{clean_scrollkeeper}
 %{clean_menus}
 %clean_icon_cache hicolor
-%endif
+%clean_icon_cache HighContrastLargePrint
+%clean_icon_cache HighContrastLargePrintInverse
+%clean_icon_cache LowContrastLargePrint
 
 %files -f %{name}-2.0.lang
 %defattr(-,root,root,-)
