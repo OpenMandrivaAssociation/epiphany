@@ -40,6 +40,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: webkitgtk-devel
 BuildRequires: icu-devel
 BuildRequires: sqlite3-devel
+BuildRequires: libcanberra-devel
 %else
 %if %build_with_xulrunner
 BuildRequires: xulrunner-devel-unstable >= %xulrunner
