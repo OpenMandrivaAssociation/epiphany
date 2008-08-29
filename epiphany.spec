@@ -40,7 +40,6 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: webkitgtk-devel
 BuildRequires: icu-devel
 BuildRequires: sqlite3-devel
-BuildRequires: libcanberra-devel
 %else
 %if %build_with_xulrunner
 BuildRequires: xulrunner-devel-unstable >= %xulrunner
@@ -56,6 +55,7 @@ BuildRequires: mozilla-devel
 BuildRequires: pygtk2.0-devel >= 2.7.1
 BuildRequires: gnome-python-devel
 %endif
+BuildRequires: libcanberra-devel
 BuildRequires: gtk2-devel >= 2.9.0
 BuildRequires: gnome-desktop-devel >= 2.10.0
 BuildRequires: libglade2.0-devel >= 2.3.1
