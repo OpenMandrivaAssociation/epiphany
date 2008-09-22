@@ -18,11 +18,11 @@
 
 %define xulrunner 1.9
 
-%define dirver 2.23
+%define dirver 2.24
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.23.91
+Version: 2.24.0
 Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
