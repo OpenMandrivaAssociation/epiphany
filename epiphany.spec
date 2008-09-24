@@ -22,7 +22,7 @@
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.24.0
+Version: 2.24.0.1
 Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
