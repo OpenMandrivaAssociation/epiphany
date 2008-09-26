@@ -23,7 +23,7 @@
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
 Version: 2.24.0.1
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -87,7 +87,9 @@ Requires: iso-codes
 Requires: dbus-x11
 Requires: enchant
 %if %build_with_xulrunner
-Requires: %mklibname xulrunner %xulrunner
+%define xullibname %mklibname xulrunner %xulrunner
+%define xulver %(rpm -q --queryformat %%{VERSION} %xullibname)
+Requires: %xullibname = %xulver
 %endif
 %if %{build_with_firefox}
 %define firefox_version %(rpm -q mozilla-firefox --queryformat %{VERSION})
