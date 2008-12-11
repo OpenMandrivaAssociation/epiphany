@@ -70,7 +70,7 @@ BuildRequires: intltool
 BuildRequires: gnome-common
 BuildRequires: gnome-doc-utils >= 0.3.2
 BuildRequires: librsvg
-BuildRequires: ImageMagick
+BuildRequires: imagemagick
 BuildRequires: desktop-file-utils
 BuildRequires: enchant-devel
 BuildRequires: autoconf2.5
