@@ -34,7 +34,7 @@ Patch1:	epiphany-2.24.2.1-defaults.patch
 Patch6: epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch9: epiphany-1.8.5-urpmi.patch
-
+Patch10: epiphany-2.24.2.1-fix-str-fmt.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %{build_with_webkit}
 BuildRequires: webkitgtk-devel
@@ -141,6 +141,7 @@ This contains the C headers required for developing with Epiphany.
 %patch1 -p1 -b .defaults
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
+%patch10 -p0 -b .str
 
 %build
 
