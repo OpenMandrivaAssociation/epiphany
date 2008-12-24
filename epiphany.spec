@@ -29,7 +29,7 @@ Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 # (fc) 0.9.2-2mdk fix defaults settings
-Patch1:	epiphany-1.6.4-defaults.patch
+Patch1:	epiphany-2.24.2.1-defaults.patch
 # (fc) 1.4.6-2mdk default bookmarks
 Patch6: epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
