@@ -2,7 +2,6 @@
 
 %define build_with_xulrunner 1
 %define build_with_firefox 0
-%define build_with_webkit 0
 
 %define with_python 1
 %{?_with_python: %global with_python 1}
@@ -12,17 +11,13 @@
 %{?_with_mozilla: %global build_with_firefox 0}
 %{?_without_mozilla: %global build_with_firefox 1}
 
-
-%{?_with_webkit: %global build_with_webkit 1}
-%{?_without_webkit: %global build_with_webkit 0}
-
 %define xulrunner 1.9
 
-%define dirver 2.24
+%define dirver 2.25
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.24.3
+Version: 2.25.5
 Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
@@ -36,11 +31,6 @@ Patch6: epiphany-defaultbookmarks.patch
 Patch9: epiphany-1.8.5-urpmi.patch
 Patch10: epiphany-2.24.2.1-fix-str-fmt.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-%if %{build_with_webkit}
-BuildRequires: webkitgtk-devel
-BuildRequires: icu-devel
-BuildRequires: sqlite3-devel
-%else
 %if %build_with_xulrunner
 BuildRequires: xulrunner-devel-unstable >= %xulrunner
 %else
@@ -50,13 +40,12 @@ BuildRequires: mozilla-firefox-devel
 BuildRequires: mozilla-devel
 %endif
 %endif
-%endif
 %if %{with_python}
 BuildRequires: pygtk2.0-devel >= 2.7.1
 BuildRequires: gnome-python-devel
 %endif
 BuildRequires: libcanberra-devel
-BuildRequires: gtk2-devel >= 2.9.0
+BuildRequires: gtk2-devel >= 2.15.1
 BuildRequires: gnome-desktop-devel >= 2.10.0
 BuildRequires: libglade2.0-devel >= 2.3.1
 BuildRequires: iso-codes
@@ -95,7 +84,7 @@ Requires: %xullibname = %xulver
 %define firefox_version %(rpm -q mozilla-firefox --queryformat %{VERSION})
 Requires: %mklibname mozilla-firefox %{firefox_version}
 %else
-%if ! %{build_with_webkit} && ! %build_with_xulrunner
+%if ! %build_with_xulrunner
 Requires: mozilla = %(rpm -q mozilla --queryformat %{VERSION})
 %endif
 %endif
@@ -116,11 +105,6 @@ Requires: libxml2-devel
 Requires: libgnomeui2-devel
 Requires: libglade2.0-devel
 Requires: dbus-devel
-%if %{build_with_webkit}
-Requires: webkitgtk-devel
-Requires: icu-devel
-Requires: sqlite3-devel
-%else
 %if %build_with_xulrunner
 Requires: xulrunner-devel-unstable >= %xulrunner
 %else
@@ -128,7 +112,6 @@ Requires: xulrunner-devel-unstable >= %xulrunner
 Requires: mozilla-firefox-devel
 %else
 Requires: mozilla-devel
-%endif
 %endif
 %endif
 
@@ -149,10 +132,6 @@ aclocal -Im4
 automake
 autoconf
 %configure2_5x --with-distributor-name=Mandriva \
-%if %{build_with_webkit}
---with-engine=webkit \
-%else
---with-engine=mozilla \
 %if %build_with_xulrunner
 --with-mozilla=libxul-embedding \
 %else
@@ -161,7 +140,6 @@ autoconf
 --with-mozilla=firefox \
 %else
 --with-mozilla=mozilla-firefox \
-%endif
 %endif
 %endif
 %endif
@@ -262,9 +240,7 @@ fi
 %dir %_libdir/epiphany
 %dir %_libdir/epiphany/%dirver/
 %dir %_libdir/epiphany/%dirver/extensions
-%if ! %{build_with_webkit}
 %_libdir/epiphany/%dirver/plugins
-%endif
 
 %files devel
 %defattr(-,root,root,-)
