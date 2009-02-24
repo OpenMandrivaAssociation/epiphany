@@ -18,7 +18,7 @@
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
 Version: 2.25.91
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -30,6 +30,7 @@ Patch6: epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch9: epiphany-1.8.5-urpmi.patch
 Patch10: epiphany-2.24.2.1-fix-str-fmt.patch
+Patch11: epiphany-2.22.3-CVE-2008-5985-debian.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %build_with_xulrunner
 BuildRequires: xulrunner-devel-unstable >= %xulrunner
@@ -125,6 +126,7 @@ This contains the C headers required for developing with Epiphany.
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
 %patch10 -p0 -b .str
+%patch11 -p1 -b .CVE-2008-5985
 
 %build
 
