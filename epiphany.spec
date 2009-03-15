@@ -13,12 +13,12 @@
 
 %define xulrunner 1.9
 
-%define dirver 2.25
+%define dirver 2.26
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.25.91
-Release: %mkrel 3
+Version: 2.26.0
+Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -166,9 +166,9 @@ echo 'NoDisplay=true' >>$RPM_BUILD_ROOT%{_datadir}/applications/bme.desktop
 sed -i -e '/^X-GNOME-Bugzilla/d' $RPM_BUILD_ROOT%{_datadir}/applications/bme.desktop
 
 %find_lang %{name}-2.0 --with-gnome --all-name
-for omf in %buildroot%_datadir/omf/%name/%name-??*.omf;do
-echo "%lang($(basename $omf|sed -e s/%name-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name-2.0.lang
-done
+#for omf in %buildroot%_datadir/omf/%name/%name-??*.omf;do
+#echo "%lang($(basename $omf|sed -e s/%name-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name-2.0.lang
+#done
 
 mkdir -p %buildroot{%_liconsdir,%_iconsdir,%_miconsdir}
 install -m 644 data/art/epiphany-bookmarks.png %buildroot%_liconsdir/epiphany-bookmarks.png
@@ -229,8 +229,8 @@ fi
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/icons/HighContrastLargePrint/*/apps/*
 %{_datadir}/icons/HighContrastLargePrintInverse/*/apps/*
-%dir %{_datadir}/omf/epiphany
-%{_datadir}/omf/epiphany/epiphany-C.omf
+#%dir %{_datadir}/omf/epiphany
+#%{_datadir}/omf/epiphany/epiphany-C.omf
 %if %{with_python}
 %{_datadir}/pygtk/2.0/defs/*
 %endif
