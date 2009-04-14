@@ -17,16 +17,12 @@
 
 Summary: GNOME web browser based on the mozilla rendering engine
 Name: epiphany
-Version: 2.26.0
-Release: %mkrel 3
+Version: 2.26.1
+Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-#gw from svn, fix for https://qa.mandriva.com/show_bug.cgi?id=48963
-# http://bugzilla.gnome.org/show_bug.cgi?id=570984
-# missing arrow in topic menu button
-Patch: epiphany-r8924-fix-topic-arrow.patch
 # (fc) 0.9.2-2mdk fix defaults settings
 Patch1:	epiphany-2.24.2.1-defaults.patch
 # (fc) 1.4.6-2mdk default bookmarks
@@ -126,7 +122,6 @@ This contains the C headers required for developing with Epiphany.
 
 %prep
 %setup -q
-%patch -p2
 %patch1 -p1 -b .defaults
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
