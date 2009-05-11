@@ -1,24 +1,13 @@
-%define _requires_exceptions libnspr4\\|libplc4\\|libplds4\\|libnss\\|libsmime3\\|libsoftokn\\|libssl3\\|libgtkembedmoz\\|libxpcom
-
-%define build_with_xulrunner 1
-%define build_with_firefox 0
-
 %define with_python 1
 %{?_with_python: %global with_python 1}
 %{?_without_python: %global with_python 0}
 
-# Build with mozilla instead of firefox
-%{?_with_mozilla: %global build_with_firefox 0}
-%{?_without_mozilla: %global build_with_firefox 1}
+%define dirver 2.27
 
-%define xulrunner 1.9
-
-%define dirver 2.26
-
-Summary: GNOME web browser based on the mozilla rendering engine
+Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 2.26.1
-Release: %mkrel 2
+Version: 2.27.1
+Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -29,26 +18,17 @@ Patch1:	epiphany-2.24.2.1-defaults.patch
 Patch6: epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch9: epiphany-1.8.5-urpmi.patch
-Patch10: epiphany-2.24.2.1-fix-str-fmt.patch
+Patch10: epiphany-2.27.0-fix-str-fmt.patch
 Patch11: epiphany-2.22.3-CVE-2008-5985-debian.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-%if %build_with_xulrunner
-BuildRequires: xulrunner-devel-unstable >= %xulrunner
-%else
-%if %{build_with_firefox}
-BuildRequires: mozilla-firefox-devel
-%else
-BuildRequires: mozilla-devel
-%endif
-%endif
+BuildRequires: webkitgtk-devel >= 1.1.3
+BuildRequires: libsoup-devel >= 2.26.0
 %if %{with_python}
 BuildRequires: pygtk2.0-devel >= 2.7.1
 BuildRequires: gnome-python-devel
 %endif
-BuildRequires: libcanberra-devel
 BuildRequires: gtk2-devel >= 2.15.1
 BuildRequires: gnome-desktop-devel >= 2.10.0
-BuildRequires: libglade2.0-devel >= 2.3.1
 BuildRequires: iso-codes
 BuildRequires: libxslt-devel
 BuildRequires: dbus-devel >= 0.35
@@ -62,7 +42,6 @@ BuildRequires: gnome-doc-utils >= 0.3.2
 BuildRequires: librsvg
 BuildRequires: imagemagick
 BuildRequires: desktop-file-utils
-BuildRequires: enchant-devel
 BuildRequires: autoconf2.5
 BuildRequires: automake
 
@@ -76,24 +55,11 @@ Requires: indexhtml
 Requires: iso-codes
 Requires: dbus-x11
 Requires: enchant
-%if %build_with_xulrunner
-%define xullibname %mklibname xulrunner %xulrunner
-%define xulver %(rpm -q --queryformat %%{VERSION} %xullibname)
-Requires: %xullibname = %xulver
-%endif
-%if %{build_with_firefox}
-%define firefox_version %(rpm -q mozilla-firefox --queryformat %{VERSION})
-Requires: %mklibname mozilla-firefox %{firefox_version}
-%else
-%if ! %build_with_xulrunner
-Requires: mozilla = %(rpm -q mozilla --queryformat %{VERSION})
-%endif
-%endif
 Provides: pyphany
 Obsoletes: pyphany
 
 %description
-Epiphany is a GNOME web browser based on the mozilla
+Epiphany is a GNOME web browser based on the webkit
 rendering engine.
 The name meaning:
 "An intuitive grasp of reality through
@@ -106,15 +72,6 @@ Requires: libxml2-devel
 Requires: libgnomeui2-devel
 Requires: libglade2.0-devel
 Requires: dbus-devel
-%if %build_with_xulrunner
-Requires: xulrunner-devel-unstable >= %xulrunner
-%else
-%if %{build_with_firefox}
-Requires: mozilla-firefox-devel
-%else
-Requires: mozilla-devel
-%endif
-%endif
 
 
 %description devel
@@ -125,7 +82,7 @@ This contains the C headers required for developing with Epiphany.
 %patch1 -p1 -b .defaults
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
-%patch10 -p0 -b .str
+%patch10 -p1 -b .str
 %patch11 -p1 -b .CVE-2008-5985
 
 %build
@@ -134,21 +91,10 @@ aclocal -Im4
 automake
 autoconf
 %configure2_5x --with-distributor-name=Mandriva \
-%if %build_with_xulrunner
---with-mozilla=libxul-embedding \
-%else
-%if %{build_with_firefox}
-%if %mdkversion >= 200710
---with-mozilla=firefox \
-%else
---with-mozilla=mozilla-firefox \
-%endif
-%endif
-%endif
 %if %{with_python}
 --enable-python \
 %endif
---disable-filepicker --disable-scrollkeeper --enable-spell-checker
+--disable-scrollkeeper
 
 #remove generated files which shouldn't have been put in the tarball
 make clean
@@ -186,7 +132,7 @@ rm -f %buildroot%{_datadir}/icons/LowContrastLargePrint/*/apps/*
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%define schemas epiphany epiphany-lockdown epiphany-fonts epiphany-pango
+%define schemas epiphany epiphany-lockdown
 
 %post
 %if %mdkversion < 200900
@@ -219,8 +165,6 @@ fi
 %defattr(-,root,root,-)
 %doc COPYING.README COPYING README TODO NEWS ChangeLog
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
-%{_sysconfdir}/gconf/schemas/epiphany-fonts.schemas
-%{_sysconfdir}/gconf/schemas/epiphany-pango.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
 %{_bindir}/*
 %{_mandir}/man1/%name.1*
@@ -242,7 +186,6 @@ fi
 %dir %_libdir/epiphany
 %dir %_libdir/epiphany/%dirver/
 %dir %_libdir/epiphany/%dirver/extensions
-%_libdir/epiphany/%dirver/plugins
 
 %files devel
 %defattr(-,root,root,-)
