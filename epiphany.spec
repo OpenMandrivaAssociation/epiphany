@@ -1,12 +1,8 @@
-%define with_python 1
-%{?_with_python: %global with_python 1}
-%{?_without_python: %global with_python 0}
-
 %define dirver 2.27
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 2.27.2
+Version: 2.27.3
 Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
@@ -19,14 +15,9 @@ Patch6: epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch9: epiphany-1.8.5-urpmi.patch
 Patch10: epiphany-2.27.0-fix-str-fmt.patch
-Patch11: epiphany-2.22.3-CVE-2008-5985-debian.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: webkitgtk-devel >= 1.1.3
+BuildRequires: webkitgtk-devel >= 1.1.10
 BuildRequires: libsoup-devel >= 2.26.0
-%if %{with_python}
-BuildRequires: pygtk2.0-devel >= 2.7.1
-BuildRequires: gnome-python-devel
-%endif
 BuildRequires: gtk2-devel >= 2.15.1
 BuildRequires: gnome-desktop-devel >= 2.10.0
 BuildRequires: iso-codes
@@ -55,8 +46,6 @@ Requires: indexhtml
 Requires: iso-codes
 Requires: dbus-x11
 Requires: enchant
-Provides: pyphany
-Obsoletes: pyphany
 
 %description
 Epiphany is a GNOME web browser based on the webkit
@@ -83,7 +72,6 @@ This contains the C headers required for developing with Epiphany.
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
 %patch10 -p1 -b .str
-%patch11 -p1 -b .CVE-2008-5985
 
 %build
 
@@ -91,9 +79,6 @@ aclocal -Im4
 automake
 autoconf
 %configure2_5x --with-distributor-name=Mandriva \
-%if %{with_python}
---enable-python \
-%endif
 --disable-scrollkeeper
 
 #remove generated files which shouldn't have been put in the tarball
@@ -175,9 +160,6 @@ fi
 %{_datadir}/icons/HighContrastLargePrintInverse/*/apps/*
 %dir %{_datadir}/omf/epiphany
 %{_datadir}/omf/epiphany/epiphany-C.omf
-%if %{with_python}
-%{_datadir}/pygtk/2.0/defs/*
-%endif
 %{_datadir}/dbus-1/services/org.gnome.Epiphany.service
 %_liconsdir/*.png
 %_iconsdir/*.png
