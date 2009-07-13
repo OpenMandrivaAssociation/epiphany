@@ -16,7 +16,7 @@ Patch6: epiphany-defaultbookmarks.patch
 Patch9: epiphany-1.8.5-urpmi.patch
 Patch10: epiphany-2.27.0-fix-str-fmt.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: webkitgtk-devel >= 1.1.10
+BuildRequires: webkitgtk-devel >= 1.1.11
 BuildRequires: libsoup-devel >= 2.26.0
 BuildRequires: gtk2-devel >= 2.15.1
 BuildRequires: gnome-desktop-devel >= 2.10.0
