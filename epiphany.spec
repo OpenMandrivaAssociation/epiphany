@@ -2,7 +2,7 @@
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 2.27.90
+Version: 2.27.91
 Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
@@ -16,8 +16,8 @@ Patch6: epiphany-defaultbookmarks.patch
 Patch9: epiphany-1.8.5-urpmi.patch
 Patch10: epiphany-2.27.0-fix-str-fmt.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: webkitgtk-devel >= 1.1.11
-BuildRequires: libsoup-devel >= 2.26.0
+BuildRequires: webkitgtk-devel >= 1.1.13
+BuildRequires: libsoup-devel >= 2.27.91
 BuildRequires: gtk2-devel >= 2.15.1
 BuildRequires: gnome-desktop-devel >= 2.10.0
 BuildRequires: iso-codes
