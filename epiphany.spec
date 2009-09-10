@@ -26,6 +26,7 @@ BuildRequires: libxslt-devel
 BuildRequires: dbus-devel >= 0.35
 BuildRequires: avahi-gobject-devel
 BuildRequires: libnotify-devel
+BuildRequires: nss-devel
 BuildRequires: scrollkeeper
 BuildRequires: gtk-doc
 BuildRequires: intltool
