@@ -1,8 +1,9 @@
 %define dirver 2.27
+%define webkit 1.1.14
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 2.27.91
+Version: 2.27.92
 Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
@@ -16,7 +17,7 @@ Patch6: epiphany-defaultbookmarks.patch
 Patch9: epiphany-1.8.5-urpmi.patch
 Patch10: epiphany-2.27.0-fix-str-fmt.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: webkitgtk-devel >= 1.1.13
+BuildRequires: webkitgtk-devel >= %webkit
 BuildRequires: libsoup-devel >= 2.27.91
 BuildRequires: gtk2-devel >= 2.15.1
 BuildRequires: gnome-desktop-devel >= 2.10.0
@@ -46,6 +47,7 @@ Requires: indexhtml
 Requires: iso-codes
 Requires: dbus-x11
 Requires: enchant
+Requires: libwebkitgtk >= %webkit
 
 %description
 Epiphany is a GNOME web browser based on the webkit
