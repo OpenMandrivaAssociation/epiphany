@@ -4,11 +4,14 @@
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
 Version: 2.27.92
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+#gw fix crash in password migration from old xulrunner backend
+#https://bugzilla.gnome.org/show_bug.cgi?id=594717
+Patch: epiphany-fix-password-migration.patch
 # (fc) 0.9.2-2mdk fix defaults settings
 Patch1:	epiphany-2.24.2.1-defaults.patch
 # (fc) 1.4.6-2mdk default bookmarks
@@ -71,6 +74,7 @@ This contains the C headers required for developing with Epiphany.
 
 %prep
 %setup -q
+%patch -p1
 %patch1 -p1 -b .defaults
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
