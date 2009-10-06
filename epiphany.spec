@@ -4,7 +4,7 @@
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
 Version: 2.28.0
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -155,7 +155,7 @@ fi
 
 %files -f %{name}-2.0.lang
 %defattr(-,root,root,-)
-%doc COPYING.README COPYING README TODO NEWS ChangeLog
+%doc COPYING.README COPYING README TODO NEWS
 %{_sysconfdir}/gconf/schemas/epiphany.schemas
 %{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
 %{_bindir}/*
