@@ -1,9 +1,9 @@
-%define dirver 2.28
-%define webkit 1.1.15
+%define dirver 2.30
+%define webkit 1.1.17
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 2.28.1
+Version: 2.29.3
 Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
