@@ -1,10 +1,10 @@
 %define dirver 2.30
-%define webkit 1.1.17
+%define webkit 1.1.18
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 2.29.3
-Release: %mkrel 2
+Version: 2.29.5
+Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -21,7 +21,9 @@ Patch9: epiphany-1.8.5-urpmi.patch
 Patch10: epiphany-2.27.0-fix-str-fmt.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: webkitgtk-devel >= %webkit
-BuildRequires: libsoup-devel >= 2.27.91
+BuildRequires: libsoup-devel >= 2.29.5-2
+#gw still disabled by default:
+#BuildRequires: libseed-devel
 BuildRequires: gtk2-devel >= 2.15.1
 BuildRequires: gnome-desktop-devel >= 2.10.0
 BuildRequires: iso-codes
@@ -29,6 +31,8 @@ BuildRequires: libxslt-devel
 BuildRequires: dbus-devel >= 0.35
 BuildRequires: avahi-gobject-devel
 BuildRequires: libnotify-devel
+BuildRequires: gobject-introspection-devel >= 0.6.7
+BuildRequires: gir-repository >= 0.6.5-5
 BuildRequires: nss-devel
 BuildRequires: scrollkeeper
 BuildRequires: gtk-doc
@@ -74,7 +78,9 @@ This contains the C headers required for developing with Epiphany.
 
 %prep
 %setup -q
-%patch -p1
+cd lib
+%patch -p2
+cd ..
 %patch1 -p1 -b .defaults
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
@@ -175,6 +181,7 @@ fi
 %dir %_libdir/epiphany
 %dir %_libdir/epiphany/%dirver/
 %dir %_libdir/epiphany/%dirver/extensions
+%_libdir/girepository-1.0/Epiphany-2.29.typelib
 
 %files devel
 %defattr(-,root,root,-)
@@ -182,3 +189,4 @@ fi
 %_libdir/pkgconfig/*
 %_datadir/gtk-doc/html/epiphany
 %_datadir/aclocal/*.m4
+%_datadir/gir-1.0/Epiphany-2.29.gir
