@@ -1,9 +1,9 @@
 %define dirver 2.30
-%define webkit 1.1.21
+%define webkit 1.1.22
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 2.29.90.1
+Version: 2.29.91
 Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
@@ -21,7 +21,7 @@ Patch9: epiphany-1.8.5-urpmi.patch
 Patch10: epiphany-2.27.0-fix-str-fmt.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: webkitgtk-devel >= %webkit
-BuildRequires: libsoup-devel >= 2.29.90
+BuildRequires: libsoup-devel >= 2.29.91
 #gw still disabled by default:
 #BuildRequires: libseed-devel
 BuildRequires: gtk2-devel >= 2.15.1
