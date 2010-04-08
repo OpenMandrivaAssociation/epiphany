@@ -3,7 +3,7 @@
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 2.30.0
+Version: 2.30.2
 Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
