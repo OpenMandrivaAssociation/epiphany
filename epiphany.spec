@@ -1,4 +1,4 @@
-%define dirver 2.30
+%define dirver 2.29
 %define webkit 1.1.22
 
 Summary: GNOME web browser based on the webkit rendering engine
