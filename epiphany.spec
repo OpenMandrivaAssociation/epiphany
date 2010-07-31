@@ -4,7 +4,7 @@
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
 Version: 2.30.2
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -32,7 +32,6 @@ BuildRequires: dbus-devel >= 0.35
 BuildRequires: avahi-gobject-devel
 BuildRequires: libnotify-devel
 BuildRequires: gobject-introspection-devel >= 0.6.7
-BuildRequires: gir-repository >= 0.6.5-5
 BuildRequires: nss-devel
 BuildRequires: scrollkeeper
 BuildRequires: gtk-doc
