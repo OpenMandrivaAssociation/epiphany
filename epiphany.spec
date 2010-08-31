@@ -3,7 +3,7 @@
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 2.30.3
+Version: 2.30.5
 Release: %mkrel 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
@@ -18,7 +18,7 @@ Patch1:	epiphany-2.24.2.1-defaults.patch
 Patch6: epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch9: epiphany-1.8.5-urpmi.patch
-Patch10: epiphany-2.27.0-fix-str-fmt.patch
+Patch10: epiphany-2.30.5-fix-str-fmt.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: webkitgtk-devel >= %webkit
 BuildRequires: libsoup-devel >= 2.29.91
