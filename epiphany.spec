@@ -1,5 +1,5 @@
 %define dirver 2.29
-%define webkit 1.1.22
+%define webkit 1.2.3
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
