@@ -1,10 +1,9 @@
 %define dirver 2.29
-%define webkit 1.2.3
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
 Version: 2.30.6
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
@@ -19,33 +18,34 @@ Patch6: epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch9: epiphany-1.8.5-urpmi.patch
 Patch10: epiphany-2.30.5-fix-str-fmt.patch
+Patch11: epiphany-2.30.6-new-gir.patch
+Patch12: epiphany-2.30.6-libnotify-0.7.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: webkitgtk-devel >= %webkit
-BuildRequires: libsoup-devel >= 2.29.91
-#gw still disabled by default:
-#BuildRequires: libseed-devel
-BuildRequires: gtk2-devel >= 2.15.1
-BuildRequires: gnome-desktop-devel >= 2.10.0
-BuildRequires: iso-codes
-BuildRequires: libxslt-devel
-BuildRequires: dbus-devel >= 0.35
+BuildRequires: libice-devel
+BuildRequires: libsm-devel
+BuildRequires: libx11-devel
 BuildRequires: avahi-gobject-devel
-BuildRequires: libnotify-devel
-BuildRequires: gobject-introspection-devel >= 0.6.7
+BuildRequires: avahi-client-devel
+BuildRequires: dbus-glib-devel >= 0.35
+BuildRequires: libGConf2-devel GConf2
+BuildRequires: gtk2-devel >= 2.19.5
+BuildRequires: gobject-introspection-devel
+BuildRequires: startup-notification-devel >= 0.5
+BuildRequires: libgnome-keyring-devel >= 2.26.0
+BuildRequires: libnotify-devel >= 0.4
 BuildRequires: nss-devel
+BuildRequires: libsoup-devel >= 2.29.91
+BuildRequires: webkitgtk-devel >= 1.2.3
+BuildRequires: libxml2-devel >= 2.6.12
+BuildRequires: libxslt-devel >= 1.1.7
+BuildRequires: iso-codes >= 0.35
 BuildRequires: scrollkeeper
 BuildRequires: gtk-doc
 BuildRequires: intltool
 BuildRequires: gnome-common
 BuildRequires: gnome-doc-utils >= 0.3.2
-BuildRequires: librsvg
+BuildRequires: intltool
 BuildRequires: imagemagick
-BuildRequires: desktop-file-utils
-BuildRequires: autoconf2.5
-BuildRequires: automake
-
-Requires(post): scrollkeeper
-Requires(postun): scrollkeeper
 Provides:       webclient
 #gw for the index themes
 Requires: gnome-themes
@@ -54,7 +54,7 @@ Requires: indexhtml
 Requires: iso-codes
 Requires: dbus-x11
 Requires: enchant
-Requires: libwebkitgtk >= %webkit
+Requires: libwebkitgtk >= 1.2.3
 
 %description
 Epiphany is a GNOME web browser based on the webkit
@@ -66,36 +66,24 @@ something (as an event) usually simple and striking"
 %package devel
 Group: Development/C
 Summary: Header files for developing with Epiphany
-Requires: libxml2-devel
-Requires: libgnomeui2-devel
-Requires: libglade2.0-devel
-Requires: dbus-devel
-
 
 %description devel
 This contains the C headers required for developing with Epiphany.
 
 %prep
 %setup -q
-cd lib
-%patch -p2
-cd ..
+%patch -p1 -b .password
 %patch1 -p1 -b .defaults
 %patch6 -p1 -b .defaultbookmarks
 %patch9 -p1 -b .urpmi
 %patch10 -p1 -b .str
+%patch11 -p1 -b .gir
+%patch12 -p0 -b .libnotify
 
 %build
-
-aclocal -Im4
-automake
-autoconf
-%configure2_5x --with-distributor-name=Mandriva \
---disable-scrollkeeper
-
-#remove generated files which shouldn't have been put in the tarball
-make clean
-
+NOCONFIGURE=yes gnome-autogen.sh
+%configure2_5x --with-distributor-name=%{vendor} \
+  --disable-scrollkeeper --disable-schemas-install
 %make
 
 %install
