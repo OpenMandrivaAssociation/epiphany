@@ -107,7 +107,7 @@ convert -resize 32x32 data/art/epiphany-bookmarks.png %buildroot%_iconsdir/epiph
 convert -resize 16x16 data/art/epiphany-bookmarks.png %buildroot%_miconsdir/epiphany-bookmarks.png
 
 mkdir -p %buildroot%{_datadir}/pixmaps
-cp /usr/share/icons/gnome/24x24/apps/web-browser.png %buildroot%{_datadir}/pixmaps/epiphany.png
+cp %{buildroot}%{_iconsdir}/hicolor/24x24/apps/gnome-web-browser.png %buildroot%{_datadir}/pixmaps/epiphany.png
 
 mkdir -p  %buildroot%{_libdir}/epiphany/%dirver/extensions
 
