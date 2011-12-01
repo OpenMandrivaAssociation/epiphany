@@ -87,14 +87,14 @@ NOCONFIGURE=yes gnome-autogen.sh
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT %{name}-2.0.lang
+rm -rf %{buildroot} %{name}-2.0.lang
 
 %makeinstall_std
 
 # don't display bookmark editor in menu
-echo 'NoDisplay=true' >>$RPM_BUILD_ROOT%{_datadir}/applications/bme.desktop
+echo 'NoDisplay=true' >>%{buildroot}%{_datadir}/applications/bme.desktop
 # don't register bookmark editor in bugzilla, main .desktop is enough
-sed -i -e '/^X-GNOME-Bugzilla/d' $RPM_BUILD_ROOT%{_datadir}/applications/bme.desktop
+sed -i -e '/^X-GNOME-Bugzilla/d' %{buildroot}%{_datadir}/applications/bme.desktop
 
 %find_lang %{name}-2.0 --with-gnome --all-name
 for omf in %buildroot%_datadir/omf/%name/%name-??*.omf;do
@@ -115,7 +115,7 @@ mkdir -p  %buildroot%{_libdir}/epiphany/%dirver/extensions
 rm -f %buildroot%{_datadir}/icons/LowContrastLargePrint/*/apps/*
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %define schemas epiphany epiphany-lockdown
 
