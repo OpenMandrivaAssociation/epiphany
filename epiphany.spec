@@ -1,67 +1,60 @@
-%define dirver 2.29
+%define api 3.2
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 2.30.6
-Release: %mkrel 4
+Version: 3.2.1
+Release: 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-#gw fix crash in password migration from old xulrunner backend
-#https://bugzilla.gnome.org/show_bug.cgi?id=594717
-Patch: epiphany-fix-password-migration.patch
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
 # (fc) 0.9.2-2mdk fix defaults settings
-Patch1:	epiphany-2.24.2.1-defaults.patch
+Patch1:	epiphany-3.2.1-defaults.patch
 # (fc) 1.4.6-2mdk default bookmarks
-Patch6: epiphany-defaultbookmarks.patch
+Patch2: epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
-Patch9: epiphany-1.8.5-urpmi.patch
-Patch10: epiphany-2.30.5-fix-str-fmt.patch
-Patch11: epiphany-2.30.6-new-gir.patch
-Patch12: epiphany-2.30.6-libnotify-0.7.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: libice-devel
-BuildRequires: libsm-devel
-BuildRequires: libx11-devel
-BuildRequires: avahi-gobject-devel
-BuildRequires: avahi-client-devel
-BuildRequires: dbus-glib-devel >= 0.35
-BuildRequires: libGConf2-devel GConf2
-BuildRequires: gtk2-devel >= 2.19.5
-BuildRequires: gobject-introspection-devel
-BuildRequires: startup-notification-devel >= 0.5
-BuildRequires: libgnome-keyring-devel >= 2.26.0
-BuildRequires: libnotify-devel >= 0.4
-BuildRequires: nss-devel
-BuildRequires: libsoup-devel >= 2.29.91
-BuildRequires: webkitgtk-devel >= 1.2.3
-BuildRequires: libxml2-devel >= 2.6.12
-BuildRequires: libxslt-devel >= 1.1.7
-BuildRequires: iso-codes >= 0.35
-BuildRequires: scrollkeeper
-BuildRequires: gtk-doc
-BuildRequires: intltool
-BuildRequires: gnome-common
-BuildRequires: gnome-doc-utils >= 0.3.2
-BuildRequires: intltool
-BuildRequires: imagemagick
-Provides:       webclient
+Patch3: epiphany-1.8.5-urpmi.patch
+
+BuildRequires:	desktop-file-utils
+BuildRequires:	gnome-common
+BuildRequires:	gnome-doc-utils
+BuildRequires:	gtk-doc
+BuildRequires:	imagemagick
+BuildRequires:	intltool
+BuildRequires:	rootcerts
+BuildRequires:	gettext-devel
+BuildRequires:	pkgconfig(avahi-client)
+BuildRequires:	pkgconfig(avahi-gobject)
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gnome-keyring-1)
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
+BuildRequires:	pkgconfig(gsettings-desktop-schemas)
+BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(ice)
+BuildRequires:	pkgconfig(iso-codes)
+BuildRequires:	pkgconfig(libnotify)
+BuildRequires:	pkgconfig(libsoup-gnome-2.4)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(libxslt)
+BuildRequires:	pkgconfig(nss)
+BuildRequires:	pkgconfig(seed)
+BuildRequires:	pkgconfig(sqlite3)
+BuildRequires:	pkgconfig(sm)
+BuildRequires:	pkgconfig(webkitgtk-3.0)
+BuildRequires:	pkgconfig(x11)
+
 #gw for the index themes
+Requires: dbus-x11
+Requires: enchant
 Requires: gnome-themes
 Requires: gnome-doc-utils >= 0.3.2
 Requires: indexhtml
 Requires: iso-codes
-Requires: dbus-x11
-Requires: enchant
-Requires: libwebkitgtk >= 1.2.3
 
 %description
-Epiphany is a GNOME web browser based on the webkit
-rendering engine.
-The name meaning:
-"An intuitive grasp of reality through
-something (as an event) usually simple and striking"
+Epiphany is a GNOME web browser based on the webkit rendering engine.
+The name meaning: "An intuitive grasp of reality through something 
+(as an event) usually simple and striking"
 
 %package devel
 Group: Development/C
@@ -72,108 +65,51 @@ This contains the C headers required for developing with Epiphany.
 
 %prep
 %setup -q
-%patch -p1 -b .password
-%patch1 -p1 -b .defaults
-%patch6 -p1 -b .defaultbookmarks
-%patch9 -p1 -b .urpmi
-%patch10 -p1 -b .str
-%patch11 -p1 -b .gir
-%patch12 -p0 -b .libnotify
+%apply_patches
 
 %build
-NOCONFIGURE=yes gnome-autogen.sh
-%configure2_5x --with-distributor-name=%{vendor} \
-  --disable-scrollkeeper --disable-schemas-install
-%make
+%configure2_5x \
+	--with-distributor-name=%{vendor} \
+	--disable-scrollkeeper
+
+%make LIBS='-lgmodule-2.0'
 
 %install
-rm -rf %{buildroot} %{name}-2.0.lang
-
 %makeinstall_std
+%find_lang %{name} --with-gnome --all-name
 
-# don't display bookmark editor in menu
-echo 'NoDisplay=true' >>%{buildroot}%{_datadir}/applications/bme.desktop
-# don't register bookmark editor in bugzilla, main .desktop is enough
-sed -i -e '/^X-GNOME-Bugzilla/d' %{buildroot}%{_datadir}/applications/bme.desktop
-
-%find_lang %{name}-2.0 --with-gnome --all-name
-for omf in %buildroot%_datadir/omf/%name/%name-??*.omf;do
-echo "%lang($(basename $omf|sed -e s/%name-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name-2.0.lang
-done
-
-mkdir -p %buildroot{%_liconsdir,%_iconsdir,%_miconsdir}
-install -m 644 data/art/epiphany-bookmarks.png %buildroot%_liconsdir/epiphany-bookmarks.png
-convert -resize 32x32 data/art/epiphany-bookmarks.png %buildroot%_iconsdir/epiphany-bookmarks.png
-convert -resize 16x16 data/art/epiphany-bookmarks.png %buildroot%_miconsdir/epiphany-bookmarks.png
-
-mkdir -p %buildroot%{_datadir}/pixmaps
-cp %{buildroot}%{_iconsdir}/hicolor/24x24/apps/gnome-web-browser.png %buildroot%{_datadir}/pixmaps/epiphany.png
-
-mkdir -p  %buildroot%{_libdir}/epiphany/%dirver/extensions
+mkdir -p  %{buildroot}%{_libdir}/epiphany/%{api}/extensions
 
 #gw these are useless
-rm -f %buildroot%{_datadir}/icons/LowContrastLargePrint/*/apps/*
-
-%clean
-rm -rf %{buildroot}
-
-%define schemas epiphany epiphany-lockdown
+rm -f %{buildroot}%{_datadir}/icons/LowContrastLargePrint/*/apps/*
 
 %post
-%if %mdkversion < 200900
-%{update_scrollkeeper}
-%post_install_gconf_schemas %{schemas}
-%endif
 if [ "$1" = "2" ]; then
 update-alternatives --remove webclient-gnome %{_bindir}/epiphany
 update-alternatives --remove webclient-kde %{_bindir}/epiphany
 fi
-%update_icon_cache hicolor
-%update_icon_cache HighContrastLargePrint
-%update_icon_cache HighContrastLargePrintInverse
 
-%if %mdkversion < 200900
-%{update_menus}
-%endif
-
-%preun
-%preun_uninstall_gconf_schemas %{schemas}
-
-%postun
-%{clean_scrollkeeper}
-%{clean_menus}
-%clean_icon_cache hicolor
-%clean_icon_cache HighContrastLargePrint
-%clean_icon_cache HighContrastLargePrintInverse
-
-%files -f %{name}-2.0.lang
-%defattr(-,root,root,-)
+%files -f %{name}.lang
 %doc COPYING.README COPYING README TODO NEWS
-%{_sysconfdir}/gconf/schemas/epiphany.schemas
-%{_sysconfdir}/gconf/schemas/epiphany-lockdown.schemas
 %{_bindir}/*
-%{_mandir}/man1/%name.1*
+%dir %{_libdir}/epiphany
+%dir %{_libdir}/epiphany/%{api}/
+%dir %{_libdir}/epiphany/%{api}/extensions
+%{_libdir}/girepository-1.0/Epiphany-%{api}.typelib
+%{_libdir}/girepository-1.0/EphyEgg-%{api}.typelib
 %{_datadir}/applications/*
+%{_datadir}/dbus-1/services/org.gnome.Epiphany.service
 %{_datadir}/epiphany
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/icons/HighContrastLargePrint/*/apps/*
-%{_datadir}/icons/HighContrastLargePrintInverse/*/apps/*
-%dir %{_datadir}/omf/epiphany
-%{_datadir}/omf/epiphany/epiphany-C.omf
-%{_datadir}/dbus-1/services/org.gnome.Epiphany.service
-%_liconsdir/*.png
-%_iconsdir/*.png
-%_miconsdir/*.png
-%_datadir/pixmaps/*.png
-%dir %_libdir/epiphany
-%dir %_libdir/epiphany/%dirver/
-%dir %_libdir/epiphany/%dirver/extensions
-%_libdir/girepository-1.0/Epiphany-2.29.typelib
+%{_datadir}/GConf/gsettings/epiphany.convert
+%{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
+%{_mandir}/man1/%{name}.1*
 
 %files devel
-%defattr(-,root,root,-)
-%_includedir/*
-%_libdir/pkgconfig/*
-%_datadir/gtk-doc/html/epiphany
-%_datadir/aclocal/*.m4
-%_datadir/gir-1.0/Epiphany-2.29.gir
+%{_includedir}/*
+%{_libdir}/pkgconfig/*
+%{_datadir}/gtk-doc/html/epiphany
+%{_datadir}/aclocal/*.m4
+%{_datadir}/gir-1.0/Epiphany-%{api}.gir
+%{_datadir}/gir-1.0/EphyEgg-%{api}.gir
