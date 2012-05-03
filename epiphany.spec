@@ -14,6 +14,8 @@ Patch1:	epiphany-3.2.1-defaults.patch
 Patch2: epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
 Patch3: epiphany-1.8.5-urpmi.patch
+# indexhtml
+Patch4:	epiphany-3.4.1-default-indexhtml.patch
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-common
