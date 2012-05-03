@@ -1,13 +1,13 @@
-%define api 3.2
+%define api 3.4
 
 Summary: GNOME web browser based on the webkit rendering engine
 Name: epiphany
-Version: 3.2.1
+Version: 3.4.1
 Release: 1
 License: GPLv2+ and GFDL
 Group: Networking/WWW
 URL: http://www.gnome.org/projects/epiphany/
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/epiphany/%{api}/%{name}-%{version}.tar.xz
 # (fc) 0.9.2-2mdk fix defaults settings
 Patch1:	epiphany-3.2.1-defaults.patch
 # (fc) 1.4.6-2mdk default bookmarks
@@ -100,7 +100,6 @@ fi
 %{_datadir}/applications/*
 %{_datadir}/dbus-1/services/org.gnome.Epiphany.service
 %{_datadir}/epiphany
-%{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/GConf/gsettings/epiphany.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
