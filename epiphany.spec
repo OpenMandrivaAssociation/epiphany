@@ -87,8 +87,8 @@ rm -f %{buildroot}%{_datadir}/icons/LowContrastLargePrint/*/apps/*
 
 %post
 if [ "$1" = "2" ]; then
-update-alternatives --remove webclient-gnome %{_bindir}/epiphany
-update-alternatives --remove webclient-kde %{_bindir}/epiphany
+	update-alternatives --remove webclient-gnome %{_bindir}/epiphany
+	update-alternatives --remove webclient-kde %{_bindir}/epiphany
 fi
 
 %files -f %{name}.lang
@@ -98,7 +98,6 @@ fi
 %dir %{_libdir}/epiphany/%{api}/
 %dir %{_libdir}/epiphany/%{api}/extensions
 %{_libdir}/girepository-1.0/Epiphany-%{api}.typelib
-%{_libdir}/girepository-1.0/EphyEgg-%{api}.typelib
 %{_datadir}/applications/*
 %{_datadir}/dbus-1/services/org.gnome.Epiphany.service
 %{_datadir}/epiphany
@@ -113,4 +112,3 @@ fi
 %{_datadir}/gtk-doc/html/epiphany
 %{_datadir}/aclocal/*.m4
 %{_datadir}/gir-1.0/Epiphany-%{api}.gir
-%{_datadir}/gir-1.0/EphyEgg-%{api}.gir
