@@ -19,7 +19,6 @@ Patch4:	epiphany-3.4.1-default-indexhtml.patch
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-common
-BuildRequires:	gnome-doc-utils
 BuildRequires:	gtk-doc
 BuildRequires:	imagemagick
 BuildRequires:	intltool
@@ -28,6 +27,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(avahi-client)
 BuildRequires:	pkgconfig(avahi-gobject)
 BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-keyring-1)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
