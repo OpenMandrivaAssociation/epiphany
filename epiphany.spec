@@ -1,19 +1,19 @@
-%define api 3.4
+%define api	3.4
 
-Summary: GNOME web browser based on the webkit rendering engine
-Name: epiphany
-Version: 3.4.3
-Release: 1
-License: GPLv2+ and GFDL
-Group: Networking/WWW
-URL: http://www.gnome.org/projects/epiphany/
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/epiphany/%{name}-%{version}.tar.xz
+Summary:	GNOME web browser based on the webkit rendering engine
+Name:		epiphany
+Version:	3.4.3
+Release:	1
+License:	GPLv2+ and GFDL
+Group:		Networking/WWW
+URL:		http://www.gnome.org/projects/epiphany/
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/epiphany/%{name}-%{version}.tar.xz
 # (fc) 0.9.2-2mdk fix defaults settings
 Patch1:	epiphany-3.2.1-defaults.patch
 # (fc) 1.4.6-2mdk default bookmarks
-Patch2: epiphany-defaultbookmarks.patch
+Patch2:	epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
-Patch3: epiphany-1.8.5-urpmi.patch
+Patch3:	epiphany-1.8.5-urpmi.patch
 # indexhtml
 Patch4:	epiphany-3.4.1-default-indexhtml.patch
 
@@ -46,12 +46,12 @@ BuildRequires:	pkgconfig(webkitgtk-3.0)
 BuildRequires:	pkgconfig(x11)
 
 #gw for the index themes
-Requires: dbus-x11
-Requires: enchant
-Requires: gnome-themes
-Requires: gnome-doc-utils >= 0.3.2
-Requires: indexhtml
-Requires: iso-codes
+Requires:	dbus-x11
+Requires:	enchant
+Requires:	gnome-themes
+Requires:	gnome-doc-utils >= 0.3.2
+Requires:	indexhtml
+Requires:	iso-codes
 
 %description
 Epiphany is a GNOME web browser based on the webkit rendering engine.
@@ -59,8 +59,8 @@ The name meaning: "An intuitive grasp of reality through something
 (as an event) usually simple and striking"
 
 %package devel
-Group: Development/C
-Summary: Header files for developing with Epiphany
+Summary:	Header files for developing with Epiphany
+Group:		Development/C
 
 %description devel
 This contains the C headers required for developing with Epiphany.
@@ -80,7 +80,7 @@ This contains the C headers required for developing with Epiphany.
 %makeinstall_std
 %find_lang %{name} --with-gnome --all-name
 
-mkdir -p  %{buildroot}%{_libdir}/epiphany/%{api}/extensions
+mkdir -p %{buildroot}%{_libdir}/epiphany/%{api}/extensions
 
 #gw these are useless
 rm -f %{buildroot}%{_datadir}/icons/LowContrastLargePrint/*/apps/*
