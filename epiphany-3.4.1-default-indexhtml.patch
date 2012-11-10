@@ -1,0 +1,11 @@
+--- epiphany-3.4.1.orig/embed/ephy-web-view.c	2012-03-26 18:59:35.000000000 +0300
++++ epiphany-3.4.1/embed/ephy-web-view.c	2012-04-14 23:04:32.216444749 +0300
+@@ -3717,7 +3717,7 @@ ephy_web_view_load_homepage (EphyWebView
+ 
+   ephy_web_view_set_visit_type (view,
+                                 EPHY_PAGE_VISIT_HOMEPAGE);
+-  ephy_web_view_load_url (view, "about:blank");
++  ephy_web_view_load_url (view, "file:///usr/share/doc/HTML/index.html");
+ }
+ 
+ /**

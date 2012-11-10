@@ -1,0 +1,237 @@
+diff -p -up epiphany-2.29.92/data/default-bookmarks.rdf.in.defaultbookmarks epiphany-2.29.92/data/default-bookmarks.rdf.in
+--- epiphany-2.29.92/data/default-bookmarks.rdf.in.defaultbookmarks	2010-01-08 19:20:59.000000000 +0100
++++ epiphany-2.29.92/data/default-bookmarks.rdf.in	2010-03-18 18:34:03.000000000 +0100
+@@ -6,6 +6,43 @@
+     <items>
+       <rdf:Seq>
+         <rdf:li rdf:resource="http://www.google.com"/>
++        <rdf:li rdf:resource="http://www.mandriva.com/"/>
++        <rdf:li rdf:resource="http://store.mandriva.com/"/>
++        <rdf:li rdf:resource="http://support.mandriva.com/"/>
++        <rdf:li rdf:resource="http://www.mandriva.com/community/"/>
++        <rdf:li rdf:resource="http://ogg.jamendo.com/"/>
++        <rdf:li rdf:resource="http://wiki.mandriva.com/"/>
++        <rdf:li rdf:resource="http://www.gnu.org/software/software.html"/>
++        <rdf:li rdf:resource="http://www.gnu.org/"/>
++        <rdf:li rdf:resource="http://freshmeat.net/"/>
++        <rdf:li rdf:resource="http://www.gnome.org/"/>
++        <rdf:li rdf:resource="http://www.kde.org/"/>
++        <rdf:li rdf:resource="http://www.linux.org/"/>
++        <rdf:li rdf:resource="http://www.linux-foundation.org/"/>
++        <rdf:li rdf:resource="http://www.linuxgames.com/"/>
++        <rdf:li rdf:resource="http://www.linuxhq.com/"/>
++        <rdf:li rdf:resource="http://www.kernel.org/"/>
++        <rdf:li rdf:resource="http://www.x.org/"/>
++        <rdf:li rdf:resource="http://alllinuxdevices.com/"/>
++        <rdf:li rdf:resource="http://www.linux.com/"/>
++        <rdf:li rdf:resource="http://www.linuxplanet.com/"/>
++        <rdf:li rdf:resource="http://linuxtoday.com/"/>
++        <rdf:li rdf:resource="http://www.lwn.net/"/>
++        <rdf:li rdf:resource="http://slashdot.org/"/>
++        <rdf:li rdf:resource="http://wiki.mandriva.com/Development"/>
++        <rdf:li rdf:resource="http://gcc.gnu.org"/>
++        <rdf:li rdf:resource="http://www.gtk.org/"/>
++        <rdf:li rdf:resource="http://developer.kde.org/"/>
++        <rdf:li rdf:resource="http://www.opensource.org/"/>
++        <rdf:li rdf:resource="http://www.perl.org/"/>
++        <rdf:li rdf:resource="http://www.python.org/"/>
++        <rdf:li rdf:resource="http://www.trolltech.com/products/qt/"/>
++        <rdf:li rdf:resource="http://www.rpm.org/"/>
++        <rdf:li rdf:resource="http://sourceforge.net/"/>
++        <rdf:li rdf:resource="http://www.transgaming.com/products/cedega/"/>
++        <rdf:li rdf:resource="http://www.fluendo.com/"/>
++        <rdf:li rdf:resource="http://picasa.google.com/linux/"/>
++        <rdf:li rdf:resource="http://earth.google.com/"/>
+       </rdf:Seq>
+     </items>
+   </channel>
+@@ -20,4 +57,189 @@
+ 	 "http://www.google.nl" and "http://www.google.nl/search?q=%s" -->
+     <_ephy:smartlink>http://www.google.com/search?q=%s&amp;ie=UTF-8&amp;oe=UTF-8</_ephy:smartlink>
+   </item>
++  <item rdf:about="http://www.mandriva.com/">
++    <title>Mandriva</title>
++    <link>http://www.mandriva.com/</link>
++    <dc:subject>Mandriva</dc:subject>
++  </item>
++  <item rdf:about="http://store.mandriva.com/">
++    <title>Mandriva Store</title>
++    <link>http://store.mandriva.com/</link>
++    <dc:subject>Mandriva</dc:subject>
++  </item>
++  <item rdf:about="http://support.mandriva.com/">
++    <title>Mandriva Expert</title>
++    <link>http://support.mandriva.com/</link>
++    <dc:subject>Mandriva</dc:subject>
++  </item>
++  <item rdf:about="http://www.mandriva.com/community/">
++    <title>Mandriva Community</title>
++    <link>http://www.mandriva.com/community/</link>
++    <dc:subject>Mandriva</dc:subject>
++  </item>
++  <item rdf:about="http://ogg.jamendo.com/">
++    <title>Jamendo</title>
++    <link>http://ogg.jamendo.com/</link>
++    <dc:subject>Mandriva</dc:subject>
++  </item>
++  <item rdf:about="http://wiki.mandriva.com/">
++    <title>Mandriva Wiki</title>
++    <link>http://wiki.mandriva.com/</link>
++    <dc:subject>Mandriva</dc:subject>
++  </item>
++  <item rdf:about="http://www.gnu.org/software/software.html">
++    <title>Free Software Foundation</title>
++    <link>http://www.gnu.org/software/software.html</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://www.gnu.org/">
++    <title>The GNU Project</title>
++    <link>http://www.gnu.org/</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://freshmeat.net/">
++    <title>Freshmeat</title>
++    <link>http://freshmeat.net/</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://www.gnome.org/">
++    <title>GNOME</title>
++    <link>http://www.gnome.org/</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://www.kde.org/">
++    <title>KDE</title>
++    <link>http://www.kde.org/</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://www.linux.org/">
++    <title>Linux.org</title>
++    <link>http://www.linux.org/</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://www.linux-foundation.org/">
++    <title>Linux Foundation</title>
++    <link>http://www.linux-foundation.org/</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://www.linuxgames.com/">
++    <title>Linux Games</title>
++    <link>http://www.linuxgames.com/</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://www.linuxhq.com/">
++    <title>Linux HeadQuarters</title>
++    <link>http://www.linuxhq.com/</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://www.kernel.org/">
++    <title>Linux Kernel Archives</title>
++    <link>http://www.kernel.org/</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://www.x.org/">
++    <title>X.org</title>
++    <link>http://www.x.org/</link>
++    <dc:subject>Community</dc:subject>
++  </item>
++  <item rdf:about="http://alllinuxdevices.com/">
++    <title>All Linux Devices</title>
++    <link>http://alllinuxdevices.com/</link>
++    <dc:subject>News</dc:subject>
++  </item>
++  <item rdf:about="http://www.linux.com/">
++    <title>Linux.com</title>
++    <link>http://www.linux.com/</link>
++    <dc:subject>News</dc:subject>
++  </item>
++  <item rdf:about="http://www.linuxplanet.com/">
++    <title>Linux Planet</title>
++    <link>http://www.linuxplanet.com/</link>
++    <dc:subject>News</dc:subject>
++  </item>
++  <item rdf:about="http://linuxtoday.com/">
++    <title>Linux Today</title>
++    <link>http://linuxtoday.com/</link>
++    <dc:subject>News</dc:subject>
++  </item>
++  <item rdf:about="http://www.lwn.net/">
++    <title>Linux Weekly News</title>
++    <link>http://www.lwn.net/</link>
++    <dc:subject>News</dc:subject>
++  </item>
++  <item rdf:about="http://slashdot.org/">
++    <title>Slashdot</title>
++    <link>http://slashdot.org/</link>
++    <dc:subject>News</dc:subject>
++  </item>
++  <item rdf:about="http://wiki.mandriva.com/Development">
++    <title>Mandriva Linux Cooker</title>
++    <link>http://wiki.mandriva.com/Development</link>
++    <dc:subject>Programming</dc:subject>
++  </item>
++  <item rdf:about="http://gcc.gnu.org">
++    <title>GCC</title>
++    <link>http://gcc.gnu.org</link>
++    <dc:subject>Programming</dc:subject>
++  </item>
++  <item rdf:about="http://www.gtk.org/">
++    <title>GTK+</title>
++    <link>http://www.gtk.org/</link>
++    <dc:subject>Programming</dc:subject>
++  </item>
++  <item rdf:about="http://developer.kde.org/">
++    <title>KDE - Developer's Corner</title>
++    <link>http://developer.kde.org/</link>
++    <dc:subject>Programming</dc:subject>
++  </item>
++  <item rdf:about="http://www.opensource.org/">
++    <title>OpenSource.org</title>
++    <link>http://www.opensource.org/</link>
++    <dc:subject>Programming</dc:subject>
++  </item>
++  <item rdf:about="http://www.perl.org/">
++    <title>Perl.org</title>
++    <link>http://www.perl.org/</link>
++    <dc:subject>Programming</dc:subject>
++  </item>
++  <item rdf:about="http://www.python.org/">
++    <title>Python.org</title>
++    <link>http://www.python.org/</link>
++    <dc:subject>Programming</dc:subject>
++  </item>
++  <item rdf:about="http://www.trolltech.com/products/qt/">
++    <title>Qt Overview</title>
++    <link>http://www.trolltech.com/products/qt/</link>
++    <dc:subject>Programming</dc:subject>
++  </item>
++  <item rdf:about="http://www.rpm.org/">
++    <title>RPM.org</title>
++    <link>http://www.rpm.org/</link>
++    <dc:subject>Programming</dc:subject>
++  </item>
++  <item rdf:about="http://sourceforge.net/">
++    <title>SourceForge</title>
++    <link>http://sourceforge.net/</link>
++    <dc:subject>Programming</dc:subject>
++  </item>
++  <item rdf:about="http://www.transgaming.com/products/cedega/">
++    <title>Cedega</title>
++    <link>http://www.transgaming.com/products/cedega/</link>
++    <dc:subject>Partners</dc:subject>
++  </item>
++  <item rdf:about="http://www.fluendo.com/">
++    <title>Fluendo</title>
++    <link>http://www.fluendo.com/</link>
++    <dc:subject>Partners</dc:subject>
++  </item>
++  <item rdf:about="http://picasa.google.com/linux/">
++    <title>Picasa</title>
++    <link>http://picasa.google.com/linux/</link>
++    <dc:subject>Partners</dc:subject>
++  </item>
++  <item rdf:about="http://earth.google.com/">
++    <title>Google Earth</title>
++    <link>http://earth.google.com/</link>
++    <dc:subject>Partners</dc:subject>
++  </item>
+ </rdf:RDF>

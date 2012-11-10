@@ -1,0 +1,18 @@
+--- epiphany-1.8.5/data/mime-types-permissions.xml.urpmi	2006-04-07 10:14:24.000000000 +0200
++++ epiphany-1.8.5/data/mime-types-permissions.xml	2006-04-07 10:16:19.000000000 +0200
+@@ -145,6 +145,7 @@
+ <mime-type type="application/x-lzop"/>
+ <mime-type type="application/x-magicpoint"/>
+ <mime-type type="application/x-matroska"/>
++<mime-type type="application/x-mdv-exec"/>
+ <mime-type type="application/x-mif"/>
+ <mime-type type="application/x-mozilla-bookmarks"/>
+ <mime-type type="application/x-mswinurl"/>
+@@ -189,6 +190,7 @@
+ <mime-type type="application/x-troff-man-compressed"/>
+ <mime-type type="application/x-tzo"/>
+ <mime-type type="application/x-ustar"/>
++<mime-type type="application/x-urpmi"/>
+ <mime-type type="application/x-wais-source"/>
+ <mime-type type="application/x-wordperfect"/>
+ <mime-type type="application/x-wpg"/>
