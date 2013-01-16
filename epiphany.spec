@@ -7,7 +7,7 @@ Release:	1
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
 URL:		http://www.gnome.org/projects/epiphany/
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/epiphany/%{name}-%{version}.tar.xz
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/epiphany/%{lua: print (string.match(rpm.expand("%{version}"),"%d+.%d+"))}/%{name}-%{version}.tar.xz
 # (fc) 0.9.2-2mdk fix defaults settings
 Patch1:	epiphany-3.2.1-defaults.patch
 # (fc) 1.4.6-2mdk default bookmarks
