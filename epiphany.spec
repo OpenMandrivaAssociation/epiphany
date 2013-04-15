@@ -1,3 +1,4 @@
+%define url_ver %(echo %{version}|cut -d. -f1,2)
 %define api	3.4
 
 Summary:	GNOME web browser based on the webkit rendering engine
@@ -6,16 +7,16 @@ Version:	3.4.3
 Release:	1
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
-URL:		http://www.gnome.org/projects/epiphany/
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/epiphany/%{lua: print (string.match(rpm.expand("%{version}"),"%d+.%d+"))}/%{name}-%{version}.tar.xz
+Url:		http://www.gnome.org/projects/epiphany/
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/%{url_ver}/%{name}-%{version}.tar.xz
 # (fc) 0.9.2-2mdk fix defaults settings
-Patch1:	epiphany-3.2.1-defaults.patch
+Patch1:		epiphany-3.2.1-defaults.patch
 # (fc) 1.4.6-2mdk default bookmarks
-Patch2:	epiphany-defaultbookmarks.patch
+Patch2:		epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
-Patch3:	epiphany-1.8.5-urpmi.patch
+Patch3:		epiphany-1.8.5-urpmi.patch
 # indexhtml
-Patch4:	epiphany-3.4.1-default-indexhtml.patch
+Patch4:		epiphany-3.4.1-default-indexhtml.patch
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-common
@@ -112,3 +113,4 @@ fi
 %{_datadir}/gtk-doc/html/epiphany
 %{_datadir}/aclocal/*.m4
 %{_datadir}/gir-1.0/Epiphany-%{api}.gir
+
