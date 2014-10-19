@@ -24,11 +24,14 @@ BuildRequires:	gnome-common
 BuildRequires:	gtk-doc
 BuildRequires:	imagemagick
 BuildRequires:	intltool
+BuildRequires:	itstool
 BuildRequires:	rootcerts
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(avahi-client)
 BuildRequires:	pkgconfig(avahi-gobject)
+BuildRequires:	pkgconfig(gcr-3)
 BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gnome-desktop-3.0)
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-keyring-1)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
