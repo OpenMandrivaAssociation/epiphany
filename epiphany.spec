@@ -4,7 +4,7 @@
 
 Summary:	GNOME web browser based on the webkit rendering engine
 Name:		epiphany
-Version:	3.14.1
+Version:	 3.16.0
 Release:	2
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
@@ -60,7 +60,7 @@ Requires:	iso-codes
 
 %description
 Epiphany is a GNOME web browser based on the webkit rendering engine.
-The name meaning: "An intuitive grasp of reality through something 
+The name meaning: "An intuitive grasp of reality through something
 (as an event) usually simple and striking"
 
 %prep
