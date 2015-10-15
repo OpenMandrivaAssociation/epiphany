@@ -1,11 +1,13 @@
 %define _disable_ld_no_undefined 1
+%define _disable_rebuild_configure 1
+
 %define url_ver %(echo %{version}|cut -d. -f1,2)
-%define api	3.16
+%define api	3.18
 
 Summary:	GNOME web browser based on the webkit rendering engine
 Name:		epiphany
-Version:	 3.16.0
-Release:	4
+Version:	3.18.0
+Release:	1
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
 Url:		http://www.gnome.org/projects/epiphany/
@@ -88,7 +90,7 @@ if [ "$1" = "2" ]; then
 fi
 
 %files -f %{name}.lang
-%doc COPYING.README COPYING README TODO NEWS
+%doc COPYING README TODO NEWS
 %{_bindir}/*
 %dir %{_libdir}/epiphany
 %dir %{_libdir}/epiphany/%{api}/

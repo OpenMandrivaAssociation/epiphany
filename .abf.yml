@@ -1,5 +1,6 @@
 removed_sources:
   epiphany-3.14.1.tar.xz: 60566a7f1ec00ec0fd805ef863afa5ca701af74b
+  epiphany-3.16.0.tar.xz: 748cd8381776b3e3081c145bf4a111081248ae5c
   epiphany-3.4.3.tar.xz: e897739700ca216492962f7502f4ae24f82aaadc
 sources:
-  epiphany-3.16.0.tar.xz: 748cd8381776b3e3081c145bf4a111081248ae5c
+  epiphany-3.18.0.tar.xz: df3919c79c42863df3b9f2f096f6d3b9af6b42f6
