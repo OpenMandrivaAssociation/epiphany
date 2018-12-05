@@ -2,12 +2,12 @@
 %define _disable_rebuild_configure 1
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
-%define api	3.18
+#define api	3.18
 
 Summary:	GNOME web browser based on the webkit rendering engine
 Name:		epiphany
-Version:	3.18.3
-Release:	2
+Version:	3.30.2
+Release:	1
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
 Url:		http://www.gnome.org/projects/epiphany/
@@ -17,7 +17,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/%{url_ver}/%{name}-%{ve
 # (fc) 1.4.6-2mdk default bookmarks
 #Patch2:		epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
-Patch3:		epiphany-1.8.5-urpmi.patch
+#Patch3:		epiphany-1.8.5-urpmi.patch
 # indexhtml
 #Patch4:		epiphany-3.4.1-default-indexhtml.patch
 
@@ -51,6 +51,12 @@ BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(webkit2gtk-4.0)
 BuildRequires:	pkgconfig(x11)
+BuildRequires:	meson
+BuildRequires:	pkgconfig(libsecret-1)
+BuildRequires:  pkgconfig(libdazzle-1.0)
+BuildRequires:  pkgconfig(hogweed)
+BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  gmp-devel
 
 #gw for the index themes
 Requires:	dbus-x11
@@ -67,42 +73,43 @@ The name meaning: "An intuitive grasp of reality through something
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
-%configure \
-	--with-distributor-name=%{vendor} \
-	--enable-compile-warnings=no
-
-%make
+%meson -Ddistributor_name=%{_vendor}
+%meson_build
 
 %install
-%makeinstall_std
-%find_lang %{name} --with-gnome --all-name
+%meson_install
+%find_lang %{name} --with-gnome
 
 #gw these are useless
 rm -f %{buildroot}%{_datadir}/icons/LowContrastLargePrint/*/apps/*
+find %{buildroot} -name '*.la' -delete
 
 %post
 if [ "$1" = "2" ]; then
-	update-alternatives --remove webclient-gnome %{_bindir}/epiphany
-	update-alternatives --remove webclient-kde %{_bindir}/epiphany
+update-alternatives --remove webclient-gnome %{_bindir}/epiphany || :
+update-alternatives --remove webclient-kde %{_bindir}/epiphany || :
 fi
 
 %files -f %{name}.lang
-%doc COPYING README TODO NEWS
+%doc README.md NEWS
 %{_bindir}/*
-%dir %{_libdir}/epiphany
-%dir %{_libdir}/epiphany/%{api}/
-%dir %{_libdir}/epiphany/%{api}/web-extensions
-%{_libdir}/epiphany/%{api}/web-extensions/libephywebextension.so
-%{_libexecdir}/epiphany-search-provider
-%{_datadir}/appdata/*
-%{_datadir}/applications/*
-%{_datadir}/dbus-1/services/org.gnome.Epiphany.service
-%{_datadir}/epiphany
-%{_datadir}/GConf/gsettings/epiphany.convert
-%{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
-%{_datadir}/gnome-shell/search-providers/epiphany-search-provider.ini
 %{_mandir}/man1/%{name}.1*
+%{_datadir}/applications/org.gnome.Epiphany.desktop
+%{_datadir}/%{name}/
+%{_datadir}/dbus-1/services/org.gnome.Epiphany.SearchProvider.service
+%dir %{_libdir}/%{name}/
+%{_libdir}/%{name}/libephymain.so
+%{_libdir}/%{name}/libephymisc.so
+%{_libdir}/%{name}/libephysync.so
+%dir %{_libdir}/%{name}/web-extensions/
+%{_libdir}/%{name}/web-extensions/libephywebextension.so
+%{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
+%{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.search-provider.ini
+%{_datadir}/metainfo/org.gnome.Epiphany.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/org.gnome.Epiphany*
+%{_libexecdir}/%{name}-search-provider
+%{_libexecdir}/epiphany/ephy-profile-migrator
