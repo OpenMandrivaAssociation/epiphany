@@ -55,6 +55,7 @@ BuildRequires:	meson
 BuildRequires:	pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libdazzle-1.0)
 BuildRequires:  pkgconfig(hogweed)
+BuildRequires:  pkgconfig(json-glib-1.0)
 
 #gw for the index themes
 Requires:	dbus-x11
