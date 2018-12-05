@@ -94,19 +94,22 @@ update-alternatives --remove webclient-kde %{_bindir}/epiphany || :
 fi
 
 %files -f %{name}.lang
-%doc COPYING README TODO NEWS
+%doc README.md NEWS
 %{_bindir}/*
-%dir %{_libdir}/epiphany
-%dir %{_libdir}/epiphany/%{api}/
-%dir %{_libdir}/epiphany/%{api}/web-extensions
-%{_libdir}/epiphany/%{api}/web-extensions/libephywebextension.so
-%{_libexecdir}/epiphany-search-provider
-%{_datadir}/appdata/*
-%{_datadir}/applications/*
-%{_datadir}/dbus-1/services/org.gnome.Epiphany.service
-%{_datadir}/epiphany
-%{_datadir}/GConf/gsettings/epiphany.convert
-%{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.epiphany.gschema.xml
-%{_datadir}/gnome-shell/search-providers/epiphany-search-provider.ini
 %{_mandir}/man1/%{name}.1*
+%{_datadir}/applications/org.gnome.Epiphany.desktop
+%{_datadir}/%{name}/
+%{_datadir}/dbus-1/services/org.gnome.Epiphany.SearchProvider.service
+%dir %{_libdir}/%{name}/
+%{_libdir}/%{name}/libephymain.so
+%{_libdir}/%{name}/libephymisc.so
+%{_libdir}/%{name}/libephysync.so
+%dir %{_libdir}/%{name}/web-extensions/
+%{_libdir}/%{name}/web-extensions/libephywebextension.so
+%{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
+%{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.search-provider.ini
+%{_datadir}/metainfo/org.gnome.Epiphany.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/org.gnome.Epiphany*
+%{_libexecdir}/%{name}-search-provider
+%{_libexecdir}/epiphany/ephy-profile-migrator
