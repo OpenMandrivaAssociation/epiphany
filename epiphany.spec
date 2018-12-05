@@ -17,7 +17,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/%{url_ver}/%{name}-%{ve
 # (fc) 1.4.6-2mdk default bookmarks
 #Patch2:		epiphany-defaultbookmarks.patch
 # (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
-Patch3:		epiphany-1.8.5-urpmi.patch
+#Patch3:		epiphany-1.8.5-urpmi.patch
 # indexhtml
 #Patch4:		epiphany-3.4.1-default-indexhtml.patch
 
