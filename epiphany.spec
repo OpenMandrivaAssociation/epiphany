@@ -2,12 +2,12 @@
 %define _disable_rebuild_configure 1
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
-%define api	3.18
+#define api	3.18
 
 Summary:	GNOME web browser based on the webkit rendering engine
 Name:		epiphany
-Version:	3.18.3
-Release:	2
+Version:	3.30.2
+Release:	1
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
 Url:		http://www.gnome.org/projects/epiphany/
@@ -51,6 +51,8 @@ BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(webkit2gtk-4.0)
 BuildRequires:	pkgconfig(x11)
+BuildRequires:	meson
+BuildRequires:	pkgconfig(libsecret-1)
 
 #gw for the index themes
 Requires:	dbus-x11
@@ -67,26 +69,24 @@ The name meaning: "An intuitive grasp of reality through something
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
-%configure \
-	--with-distributor-name=%{vendor} \
-	--enable-compile-warnings=no
-
-%make
+%meson -Ddistributor_name=%{_vendor}
+%meson_build
 
 %install
-%makeinstall_std
-%find_lang %{name} --with-gnome --all-name
+%meson_install
+%find_lang %{name} --with-gnome
 
 #gw these are useless
 rm -f %{buildroot}%{_datadir}/icons/LowContrastLargePrint/*/apps/*
+find %{buildroot} -name '*.la' -delete
 
 %post
 if [ "$1" = "2" ]; then
-	update-alternatives --remove webclient-gnome %{_bindir}/epiphany
-	update-alternatives --remove webclient-kde %{_bindir}/epiphany
+update-alternatives --remove webclient-gnome %{_bindir}/epiphany || :
+update-alternatives --remove webclient-kde %{_bindir}/epiphany || :
 fi
 
 %files -f %{name}.lang
