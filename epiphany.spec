@@ -2,24 +2,15 @@
 %define _disable_rebuild_configure 1
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
-#define api	3.18
 
 Summary:	GNOME web browser based on the webkit rendering engine
 Name:		epiphany
-Version:	3.32.4
+Version:	3.34.1
 Release:	1
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
 Url:		http://www.gnome.org/projects/epiphany/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/%{url_ver}/%{name}-%{version}.tar.xz
-# (fc) 0.9.2-2mdk fix defaults settings
-#Patch1:		epiphany-3.2.1-defaults.patch
-# (fc) 1.4.6-2mdk default bookmarks
-#Patch2:		epiphany-defaultbookmarks.patch
-# (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
-#Patch3:		epiphany-1.8.5-urpmi.patch
-# indexhtml
-#Patch4:		epiphany-3.4.1-default-indexhtml.patch
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-common
@@ -65,6 +56,8 @@ Requires:	gnome-themes
 Requires:	gnome-doc-utils >= 0.3.2
 Requires:	indexhtml
 Requires:	iso-codes
+# From 3.34.4 xdg-dbus-proxy is required. If not installed then epiphany crashing at launch.
+Required: xdg-dbus-proxy
 
 %description
 Epiphany is a GNOME web browser based on the webkit rendering engine.
@@ -77,8 +70,6 @@ The name meaning: "An intuitive grasp of reality through something
 
 %build
 
-#export CC=gcc
-#export CXX=g++
 %meson -Ddistributor_name=%{_vendor}
 %meson_build
 
@@ -107,11 +98,10 @@ fi
 %{_libdir}/%{name}/libephymain.so
 %{_libdir}/%{name}/libephymisc.so
 %{_libdir}/%{name}/libephysync.so
-%dir %{_libdir}/%{name}/web-extensions/
-%{_libdir}/%{name}/web-extensions/libephywebextension.so
+%{_libdir}/epiphany/web-process-extensions/libephywebprocessextension.so
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
-%{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.search-provider.ini
+%{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.SearchProvider.ini
 %{_datadir}/metainfo/org.gnome.Epiphany.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Epiphany*
 %{_libexecdir}/%{name}-search-provider
