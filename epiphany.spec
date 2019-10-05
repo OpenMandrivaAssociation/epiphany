@@ -56,6 +56,8 @@ Requires:	gnome-themes
 Requires:	gnome-doc-utils >= 0.3.2
 Requires:	indexhtml
 Requires:	iso-codes
+# From 3.34.4 xdg-dbus-proxy is required. If not installed then epiphany crashing at launch.
+Required: xdg-dbus-proxy
 
 %description
 Epiphany is a GNOME web browser based on the webkit rendering engine.
