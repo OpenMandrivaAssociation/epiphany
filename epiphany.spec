@@ -108,10 +108,10 @@ fi
 %{_libdir}/%{name}/libephymisc.so
 %{_libdir}/%{name}/libephysync.so
 %dir %{_libdir}/%{name}/web-extensions/
-%{_libdir}/%{name}/web-extensions/libephywebextension.so
+#{_libdir}/%{name}/web-extensions/libephywebextension.so
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
-%{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.search-provider.ini
+%{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.SearchProvider.ini
 %{_datadir}/metainfo/org.gnome.Epiphany.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Epiphany*
 %{_libexecdir}/%{name}-search-provider
