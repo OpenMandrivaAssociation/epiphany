@@ -2,7 +2,6 @@
 %define _disable_rebuild_configure 1
 
 %define url_ver %(echo %{version}|cut -d. -f1,2)
-#define api	3.18
 
 Summary:	GNOME web browser based on the webkit rendering engine
 Name:		epiphany
@@ -69,8 +68,6 @@ The name meaning: "An intuitive grasp of reality through something
 
 %build
 
-#export CC=gcc
-#export CXX=g++
 %meson -Ddistributor_name=%{_vendor}
 %meson_build
 
@@ -99,7 +96,7 @@ fi
 %{_libdir}/%{name}/libephymain.so
 %{_libdir}/%{name}/libephymisc.so
 %{_libdir}/%{name}/libephysync.so
-%{_libdir}/%/epiphany/web-process-extensions/libephywebprocessextension.so
+%{_libdir}/epiphany/web-process-extensions/libephywebprocessextension.so
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
 %{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.SearchProvider.ini
