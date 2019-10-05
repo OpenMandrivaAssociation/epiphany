@@ -12,14 +12,6 @@ License:	GPLv2+ and GFDL
 Group:		Networking/WWW
 Url:		http://www.gnome.org/projects/epiphany/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/%{url_ver}/%{name}-%{version}.tar.xz
-# (fc) 0.9.2-2mdk fix defaults settings
-#Patch1:		epiphany-3.2.1-defaults.patch
-# (fc) 1.4.6-2mdk default bookmarks
-#Patch2:		epiphany-defaultbookmarks.patch
-# (fc) 1.8.5-4mdk set urpmi and bundles mimetypes as safe (Mdk bug #21892)
-#Patch3:		epiphany-1.8.5-urpmi.patch
-# indexhtml
-#Patch4:		epiphany-3.4.1-default-indexhtml.patch
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-common
@@ -107,8 +99,7 @@ fi
 %{_libdir}/%{name}/libephymain.so
 %{_libdir}/%{name}/libephymisc.so
 %{_libdir}/%{name}/libephysync.so
-#dir %{_libdir}/%{name}/web-extensions/
-#{_libdir}/%{name}/web-extensions/libephywebextension.so
+%{_libdir}/%/epiphany/web-process-extensions/libephywebprocessextension.so
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
 %{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.SearchProvider.ini
