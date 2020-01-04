@@ -69,6 +69,8 @@ The name meaning: "An intuitive grasp of reality through something
 %autopatch -p1
 
 %build
+export CC=gcc
+export CXX=g++
 
 %meson -Ddistributor_name=%{_vendor}
 %meson_build
