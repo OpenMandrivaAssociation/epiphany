@@ -45,6 +45,7 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	meson
 BuildRequires:	pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libdazzle-1.0)
+BuildRequires:  pkgconfig(libhandy-0.0)
 BuildRequires:  pkgconfig(hogweed)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  gmp-devel
