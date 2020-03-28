@@ -5,7 +5,7 @@
 
 Summary:	GNOME web browser based on the webkit rendering engine
 Name:		epiphany
-Version:	3.34.4
+Version:	3.36.0
 Release:	1
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
@@ -45,6 +45,7 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	meson
 BuildRequires:	pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libdazzle-1.0)
+BuildRequires:  pkgconfig(libhandy-0.0)
 BuildRequires:  pkgconfig(hogweed)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  gmp-devel
