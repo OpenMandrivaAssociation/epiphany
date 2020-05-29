@@ -5,7 +5,7 @@
 
 Summary:	GNOME web browser based on the webkit rendering engine
 Name:		epiphany
-Version:	3.36.1
+Version:	3.36.2
 Release:	1
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
