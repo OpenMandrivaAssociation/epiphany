@@ -12,6 +12,7 @@ Group:		Networking/WWW
 Url:		http://www.gnome.org/projects/epiphany/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:  cmake
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-common
 BuildRequires:	gtk-doc
@@ -33,6 +34,7 @@ BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(iso-codes)
 BuildRequires:	pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libportal)
 BuildRequires:	pkgconfig(libsoup-gnome-2.4)
 BuildRequires:	pkgconfig(libwnck-3.0)
 BuildRequires:	pkgconfig(libxml-2.0)
