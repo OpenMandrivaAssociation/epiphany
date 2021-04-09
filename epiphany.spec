@@ -12,6 +12,7 @@ Group:		Networking/WWW
 Url:		http://www.gnome.org/projects/epiphany/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:  appstream-util
 BuildRequires:  cmake
 BuildRequires:	desktop-file-utils
 BuildRequires:	gnome-common
@@ -73,8 +74,8 @@ The name meaning: "An intuitive grasp of reality through something
 %autopatch -p1
 
 %build
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 
 %meson -Ddistributor_name=%{_vendor}
 %meson_build
