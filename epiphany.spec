@@ -77,7 +77,7 @@ The name meaning: "An intuitive grasp of reality through something
 #export CC=gcc
 #export CXX=g++
 
-%meson -Ddistributor_name=%{_vendor}
+%meson
 %meson_build
 
 %install
