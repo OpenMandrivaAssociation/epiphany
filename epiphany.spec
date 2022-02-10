@@ -11,6 +11,8 @@ License:	GPLv2+ and GFDL
 Group:		Networking/WWW
 Url:		http://www.gnome.org/projects/epiphany/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/%{url_ver}/%{name}-%{version}.tar.xz
+# Upstream patch to fix compilation with libportal 0.5
+Patch0: https://gitlab.gnome.org/GNOME/epiphany/-/merge_requests/1051.patch
 
 BuildRequires:  appstream-util
 BuildRequires:  cmake
