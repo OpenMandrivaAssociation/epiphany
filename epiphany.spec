@@ -13,6 +13,8 @@ Url:		http://www.gnome.org/projects/epiphany/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/epiphany/%{url_ver}/%{name}-%{version}.tar.xz
 # Upstream patch to fix compilation with libportal 0.5
 Patch0: https://gitlab.gnome.org/GNOME/epiphany/-/merge_requests/1051.patch
+# Upstream patch to fix compiling with meson 0.60+ https://github.com/mesonbuild/meson/issues/9441
+Patch1: https://gitlab.gnome.org/GNOME/epiphany/-/merge_requests/1031.patch
 
 BuildRequires:  appstream-util
 BuildRequires:  cmake
