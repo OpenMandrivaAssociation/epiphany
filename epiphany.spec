@@ -44,7 +44,7 @@ BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(nss)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(sm)
-BuildRequires:	pkgconfig(webkit2gtk-1.0)
+BuildRequires:	pkgconfig(webkit2gtk-4.1)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	meson
 BuildRequires:	pkgconfig(libsecret-1)
