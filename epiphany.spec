@@ -5,7 +5,7 @@
 
 Summary:	GNOME web browser based on the webkit rendering engine
 Name:		epiphany
-Version:	43.1
+Version:	44.0
 Release:	1
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
@@ -25,18 +25,21 @@ BuildRequires:	rootcerts
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(avahi-client)
 BuildRequires:	pkgconfig(avahi-gobject)
-BuildRequires:	pkgconfig(gcr-3)
+BuildRequires:	pkgconfig(gcr-4)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gnome-desktop-3.0)
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-keyring-1)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
-BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(gtk4)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(libadwaita-1
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libportal)
+BuildRequires:  pkgconfig(libarchive)            
+BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:	pkgconfig(libsoup-3.0)
 BuildRequires:	pkgconfig(libwnck-3.0)
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -44,7 +47,7 @@ BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(nss)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(sm)
-BuildRequires:	pkgconfig(webkit2gtk-4.1)
+BuildRequires:	pkgconfig(webkitgtk-6.0)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	meson
 BuildRequires:	pkgconfig(libsecret-1)
