@@ -35,7 +35,7 @@ BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(gtk4)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(libadwaita-1
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libarchive)            
