@@ -6,7 +6,7 @@
 Summary:	GNOME web browser based on the webkit rendering engine
 Name:		epiphany
 Version:	45.0
-Release:	2
+Release:	3
 License:	GPLv2+ and GFDL
 Group:		Networking/WWW
 Url:		https://www.gnome.org/projects/epiphany/
@@ -79,8 +79,8 @@ The name meaning: "An intuitive grasp of reality through something
 %autopatch -p1
 
 %build
-#export CC=gcc
-#export CXX=g++
+export CC=gcc
+export CXX=g++
 
 %meson
 %meson_build
