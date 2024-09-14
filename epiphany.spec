@@ -111,6 +111,7 @@ fi
 %{_libdir}/%{name}/libephymisc.so
 %{_libdir}/%{name}/libephysync.so
 %{_libdir}/epiphany/web-process-extensions/libephywebprocessextension.so
+%{_libdir}/epiphany/libephyautofill.so
 #{_libdir}/epiphany/web-process-extensions/libephywebextension.so
 %{_datadir}/glib-2.0/schemas/org.gnome.Epiphany.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
