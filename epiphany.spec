@@ -26,6 +26,7 @@ BuildRequires:	gettext-devel
 BuildRequires:  python-docutils
 BuildRequires:	pkgconfig(avahi-client)
 BuildRequires:	pkgconfig(avahi-gobject)
+BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:	pkgconfig(gcr-4)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
