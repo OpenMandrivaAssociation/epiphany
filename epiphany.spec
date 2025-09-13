@@ -119,7 +119,7 @@ fi
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
 %{_datadir}/dbus-1/services/org.gnome.Epiphany.WebAppProvider.service
 %{_datadir}/gnome-shell/search-providers/org.gnome.Epiphany.SearchProvider.ini
-%{_datadir}/metainfo/org.gnome.Epiphany.appdata.xml
+%{_datadir}/metainfo/org.gnome.Epiphany.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Epiphany*
 %{_libexecdir}/%{name}-search-provider
 %{_libexecdir}/epiphany/ephy-profile-migrator
