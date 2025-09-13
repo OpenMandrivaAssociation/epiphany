@@ -12,7 +12,7 @@ Group:		Networking/WWW
 Url:		https://www.gnome.org/projects/epiphany/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/epiphany/%{url_ver}/%{name}-%{version}.tar.xz
 
-
+BuildRequires:  appstream
 BuildRequires:  appstream-util
 BuildRequires:  cmake
 BuildRequires:	desktop-file-utils
