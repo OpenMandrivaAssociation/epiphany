@@ -23,6 +23,7 @@ BuildRequires:	intltool
 BuildRequires:	itstool
 BuildRequires:	rootcerts
 BuildRequires:	gettext-devel
+BuildRequires:  python-docutils
 BuildRequires:	pkgconfig(avahi-client)
 BuildRequires:	pkgconfig(avahi-gobject)
 BuildRequires:	pkgconfig(gcr-4)
